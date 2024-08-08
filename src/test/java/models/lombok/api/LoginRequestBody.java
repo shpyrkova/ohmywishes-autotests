@@ -1,0 +1,11 @@
+package models.lombok.api;
+
+import lombok.Data;
+
+@Data
+public class LoginRequestBody {
+
+    private String email;
+    private String password;
+
+}
