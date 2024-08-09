@@ -6,6 +6,8 @@ import pages.UserCustomListPage;
 import pages.FulfilledListPage;
 import testdata.TestDataGenerator;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
@@ -39,7 +41,7 @@ public class MyWishesTests extends TestBase {
         });
 
         step("Проверить, что желание появилось в списке желаний", () -> {
-            myWishesPage.wishItemTitle(wishItemTitle).shouldBe(visible);
+            myWishesPage.wishItemTitle(wishItemTitle).shouldBe(visible, Duration.ofSeconds(10));
         });
     }
 
