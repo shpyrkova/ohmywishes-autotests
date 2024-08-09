@@ -32,8 +32,8 @@ public class TestDataGenerator {
     }
 
     public static String generateGameEndDate() {
-        String day = String.valueOf(faker.number().numberBetween(1, 29));
-        String month = String.valueOf(faker.number().numberBetween(1, 12));
+        String day = String.valueOf(faker.number().numberBetween(10, 29));
+        String month = String.valueOf(faker.number().numberBetween(2, 12));
         String year = String.valueOf(faker.number().numberBetween(2024, 2030));
         return day + month + year;
     }

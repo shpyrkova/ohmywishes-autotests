@@ -1,9 +1,11 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class SantaPage {
 
@@ -13,6 +15,7 @@ public class SantaPage {
     private final SelenideElement gameDescriptionInput = $("#description");
     private final SelenideElement gameLimitInput = $("#limit");
     private final SelenideElement nextButton = $(byText("Далее"));
+    private final SelenideElement createGameLoader = $x("//*[@id='root']/div[3]/div/div/div");
 
     public SelenideElement gameLink(String gameId) {
         return $(String.format("[href='/game/%s']", gameId));
@@ -31,6 +34,10 @@ public class SantaPage {
 
     public void nextButtonClick() {
         nextButton.click();
+    }
+
+    public void waitWhileLoaderPresent() {
+        createGameLoader.shouldNotBe(Condition.visible);
     }
 
 }

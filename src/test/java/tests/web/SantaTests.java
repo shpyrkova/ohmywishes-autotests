@@ -1,6 +1,5 @@
 package tests.web;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -35,7 +34,7 @@ public class SantaTests extends TestBase {
         step("Создать игру с заполнением всех полей", () -> {
             santaPage.fillAllGameFields(title, endDate, description, limit);
             santaPage.nextButtonClick();
-            Selenide.refresh();
+            santaPage.waitWhileLoaderPresent();
         });
 
         step("Проверить, что игра появилась в списке игр", () -> {
