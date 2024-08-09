@@ -20,7 +20,7 @@ public class UserProfileTests extends TestBase {
 
     @Test
     @DisplayName("Получение данных о пользователе (о себе)")
-    void successfulDeleteWishItemTest() {
+    void getUserProfileTest() {
 
         Response response = step("Запросить данные о пользователе", () ->
                 apiClient.getOwnUserInfo());
@@ -31,6 +31,7 @@ public class UserProfileTests extends TestBase {
         UserSettings expectedUserSettings = expectedUserData.getSettings();
 
         step("Проверить, что основные поля в ответе корректны", ()-> {
+            assertThat(response.statusCode()).isEqualTo(200);
             assertThat(userResponseData.getId()).isEqualTo(expectedUserData.getId());
             assertThat(userResponseData.getBirthday()).isEqualTo(expectedUserData.getBirthday());
             assertThat(userResponseData.getFirstname()).isEqualTo(expectedUserData.getFirstname());

@@ -27,6 +27,7 @@ public class UserCustomListsTests extends TestBase {
         UserCustomList responseUserCustomList = response.as(UserCustomList.class);
 
         step("Проверить, что название и описание созданного списка корректны", () -> {
+            assertThat(response.statusCode()).isEqualTo(201);
             assertThat(responseUserCustomList.getTitle()).isEqualTo(listTitle);
             assertThat(responseUserCustomList.getDescription()).isEqualTo(listDescription);
         });

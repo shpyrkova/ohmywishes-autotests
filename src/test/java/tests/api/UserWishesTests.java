@@ -30,6 +30,7 @@ public class UserWishesTests extends TestBase {
         WishItem responseWishItem = responseBody.getItem();
 
         step("Проверить, что название и описание созданного желания корректны", () -> {
+            assertThat(response.statusCode()).isEqualTo(200);
             assertThat(responseWishItem.getTitle()).isEqualTo(wishItemTitle);
             assertThat(responseWishItem.getDescription()).isEqualTo(wishItemDescription);
         });
