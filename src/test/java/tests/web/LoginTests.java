@@ -1,6 +1,7 @@
 package tests.web;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Авторизация по электронной почте")
 public class LoginTests extends TestBase {

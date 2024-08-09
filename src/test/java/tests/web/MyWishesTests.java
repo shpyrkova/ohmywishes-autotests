@@ -1,5 +1,6 @@
 package tests.web;
 
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.*;
 import pages.UserCustomListPage;
 import pages.FulfilledListPage;
@@ -9,6 +10,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
+@Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Работа с желаниями пользователя на странице 'Мои желания'")
 public class MyWishesTests extends TestBase {

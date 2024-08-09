@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.UserCustomList;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import testdata.TestDataGenerator;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Кастомные списки желаний пользователя")
 public class UserCustomListsTests extends TestBase {

@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.User;
 import models.lombok.UserSettings;
@@ -12,6 +13,7 @@ import testdata.ExpectedUserData;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Профиль пользователя")
 public class UserProfileTests extends TestBase {

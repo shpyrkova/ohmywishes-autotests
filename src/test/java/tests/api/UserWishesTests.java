@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.*;
 import models.lombok.api.GetWishItemResponseBody;
@@ -11,6 +12,7 @@ import testdata.TestDataGenerator;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.*;
 
+@Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Желания пользователя")
 public class UserWishesTests extends TestBase {
