@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import pages.SantaPage;
 import testdata.TestDataGenerator;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
@@ -40,7 +38,7 @@ public class SantaTests extends TestBase {
         });
 
         step("Проверить, что игра появилась в списке игр", () -> {
-            santaPage.gameLink(title).shouldBe(visible, Duration.ofSeconds(10));
+            santaPage.gameLink(title).shouldBe(visible);
         });
     }
 }
