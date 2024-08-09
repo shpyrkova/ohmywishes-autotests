@@ -15,7 +15,7 @@ public class SantaPage {
     private final SelenideElement gameDescriptionInput = $("#description");
     private final SelenideElement gameLimitInput = $("#limit");
     private final SelenideElement nextButton = $(byText("Далее"));
-    private final SelenideElement createGameLoader = $x("//*[@id='root']/div[3]/div/div/div");
+    private final SelenideElement createGameForm = $x("//*[@id='root']/div[3]/div/div");
 
     public SelenideElement gameLink(String gameId) {
         return $(String.format("[href='/game/%s']", gameId));
@@ -36,8 +36,8 @@ public class SantaPage {
         nextButton.click();
     }
 
-    public void waitWhileLoaderPresent() {
-        createGameLoader.shouldNotBe(Condition.visible);
+    public void waitWhileCreateGameFormPresent() {
+        createGameForm.shouldNotBe(Condition.visible);
     }
 
 }

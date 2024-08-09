@@ -34,7 +34,7 @@ public class SantaTests extends TestBase {
         step("Создать игру с заполнением всех полей", () -> {
             santaPage.fillAllGameFields(title, endDate, description, limit);
             santaPage.nextButtonClick();
-            santaPage.waitWhileLoaderPresent();
+            santaPage.waitWhileCreateGameFormPresent();
         });
 
         step("Проверить, что игра появилась в списке игр", () -> {
