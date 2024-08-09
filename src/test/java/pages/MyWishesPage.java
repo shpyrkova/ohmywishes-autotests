@@ -14,15 +14,17 @@ public class MyWishesPage {
     public final SelenideElement createWishButton = $(byText("Загадать желание"));
     private final SelenideElement secretSantaLink = $("[href='/santa']");
     private final SelenideElement fulfilledListLink = $("[href='/fulfilled']");
-    private SelenideElement addWishItemToListButton = $(byText("Добавить в список"));
+    private final SelenideElement addWishItemToListButton = $(byText("Добавить в список"));
     public SelenideElement myWishesLink(String username) {
         return $(String.format("[href='/users/%s']", username)).shouldHave(text("Мои желания"));
     }
-    private SelenideElement shareWishListLinkButton = $(byText("Поделиться"));
-    private SelenideElement copyWishListLinkButton = $(byText("Скопировать ссылку"));
 
     public SelenideElement wishItemCard(String id) {
         return $(String.format("[href='/users/surkova/wishes/%s']", id));
+    }
+
+    public SelenideElement wishItemTitle(String title) {
+        return $(byText(title));
     }
 
     public SelenideElement wishItemOptions(String id) {
@@ -37,11 +39,6 @@ public class MyWishesPage {
 
     public void secretSantaLinkClick() {
         secretSantaLink.click();
-    }
-
-    public void shareWishListLink() {
-        shareWishListLinkButton.click();
-        copyWishListLinkButton.click();
     }
 
     public void createWishItem(String title, String link, String description, String price, String currency, String filePath) {

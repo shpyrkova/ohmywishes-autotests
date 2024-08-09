@@ -16,7 +16,7 @@ public class TestDataGenerator {
     }
 
     public static String generateWishItemTitle() {
-        return faker.food().dish();
+        return faker.food().dish() + " " + faker.food().ingredient();
     }
 
     public static String generateWishItemLink() {
@@ -45,7 +45,7 @@ public class TestDataGenerator {
     }
 
     public static String generateUserCustomListTitle() {
-        return faker.letterify("list ????");
+        return "list" + " " + faker.animal().name() + faker.food().sushi();
     }
 
     public static String generateUserCustomListDescription() {
@@ -53,7 +53,7 @@ public class TestDataGenerator {
     }
 
     public static String generateGameTitle() {
-        return faker.letterify("game ?????");
+        return "game" + " " + faker.food().fruit() + faker.food().spice();
     }
 
     public static String generateGameDescription() {

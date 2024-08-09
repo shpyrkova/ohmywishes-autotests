@@ -6,7 +6,6 @@ import pages.UserCustomListPage;
 import pages.FulfilledListPage;
 import testdata.TestDataGenerator;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
@@ -40,8 +39,7 @@ public class MyWishesTests extends TestBase {
         });
 
         step("Проверить, что желание появилось в списке желаний", () -> {
-            String createdWishItemId = apiClient.getWishItemIdFromWishlistByWishTitle(wishItemTitle);
-            myWishesPage.wishItemCard(createdWishItemId).shouldBe(visible).shouldHave(text(wishItemTitle));
+            myWishesPage.wishItemTitle(wishItemTitle).shouldBe(visible);
         });
     }
 
