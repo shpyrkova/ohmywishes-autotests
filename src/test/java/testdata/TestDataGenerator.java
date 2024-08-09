@@ -53,7 +53,7 @@ public class TestDataGenerator {
     }
 
     public static String generateGameTitle() {
-        return faker.animal().name();
+        return faker.letterify("game ?????");
     }
 
     public static String generateGameDescription() {

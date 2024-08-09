@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import pages.SantaPage;
 import testdata.TestDataGenerator;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
 
@@ -34,12 +33,10 @@ public class SantaTests extends TestBase {
         step("Создать игру с заполнением всех полей", () -> {
             santaPage.fillAllGameFields(title, endDate, description, limit);
             santaPage.nextButtonClick();
-            santaPage.waitWhileCreateGameFormPresent();
         });
 
         step("Проверить, что игра появилась в списке игр", () -> {
-            String createdGameId = apiClient.getGameIdFromGameListByGameTitle(title);
-            santaPage.gameLink(createdGameId).shouldBe(visible).shouldHave(text(title));
+            santaPage.gameLink(title).shouldBe(visible);
         });
     }
 }
