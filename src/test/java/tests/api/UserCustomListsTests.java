@@ -5,7 +5,6 @@ import models.lombok.UserCustomList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import steps.CommonSteps;
 import testdata.TestDataGenerator;
 
 import static io.qameta.allure.Allure.step;
@@ -15,10 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("API. Кастомные списки желаний пользователя")
 public class UserCustomListsTests extends TestBase {
 
-    CommonSteps steps = new CommonSteps();
-
     @Test
-    @DisplayName("API. Создание списка желаний")
+    @DisplayName("Создание списка желаний")
     void createUserCustomListTest() {
         String listTitle = TestDataGenerator.generateUserCustomListTitle();
         String listDescription = TestDataGenerator.generateUserCustomListDescription();

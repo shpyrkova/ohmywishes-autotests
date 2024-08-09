@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MainPageTests extends TestBase {
 
     @Test
-    @DisplayName("Для неавторизованного пользователя по нажатию Мои желания открывается страница авторизации")
+    @DisplayName("Для неавторизованного пользователя по нажатию 'Мои желания' открывается страница авторизации")
     void Test() {
         step("Открыть главную страницу", () -> {
             open("");

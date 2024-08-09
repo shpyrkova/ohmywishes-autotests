@@ -4,6 +4,7 @@ import api.ApiClient;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ApiConfig;
 import config.CredentialsConfig;
+import config.web.WebDriverConfig;
 import config.web.WebDriverProvider;
 import helpers.Attachments;
 import helpers.WebTestsHelper;
@@ -22,6 +23,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
 
     protected WebTestsHelper webTestsHelper = new WebTestsHelper();
+    private final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
     public ApiClient apiClient = new ApiClient();
     CommonSteps steps = new CommonSteps();
     protected static CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
@@ -42,6 +44,10 @@ public class TestBase {
     @AfterEach
     void afterEach() {
         Attachments.screenshotAs("Last step screenshot");
+        Attachments.browserConsoleLogs();
+        if (config.isRemote()) {
+            Attachments.addVideo();
+        }
         closeWebDriver();
     }
 

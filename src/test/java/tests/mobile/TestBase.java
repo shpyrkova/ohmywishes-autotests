@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.CredentialsConfig;
 import config.mobile.MobileDriverProvider;
-import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -36,8 +35,7 @@ public class TestBase {
     }
 
     @AfterEach
-    void addAttachments() {
-        Attachments.pageSource();
+    void afterEach() {
         closeWebDriver();
     }
 }
