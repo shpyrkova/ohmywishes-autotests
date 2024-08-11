@@ -76,6 +76,7 @@ public class MyWishesTests extends TestBase {
 
         step("Добавить желание в список желаний", () -> {
             myWishesPage.addWishItemToList(wishItemId, listTitle);
+            myWishesPage.wishUpdatedMessage.shouldBe(visible);
         });
 
         step("Проверить, что желание появилось в списке", () -> {
