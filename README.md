@@ -106,6 +106,12 @@ flowchart LR
 ```
 gradle clean for_jenkins -Denv=remote
 ```
+#### Параметры, которыми можно управлять (указывать их необязательно):
+```
+-DbrowserName - наименование браузера (_по умолчанию - <code>chrome</code>_).
+-DbrowserVersion - номер версии браузера (_по умолчанию - <code>122</code>_).
+-DbrowserSize - размер окна браузера. (_по умолчанию - <code>1980x1080</code>_).
+```
 ### Локальный запуск тестов
 Тесты могут быть запущены как командами через терминал, так и по кнопке в IntelliJ IDEA. 
 #### WEB
@@ -144,4 +150,5 @@ gradle clean android -DdeviceHost=emulation
 ```
 gradle allureServe
 ```
+
 
