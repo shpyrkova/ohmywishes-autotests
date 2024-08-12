@@ -13,7 +13,7 @@ public class WebDriverProvider {
     public void setWebConfig() {
         Configuration.baseUrl = config.getBaseUrl().toString();
         Configuration.browser = config.getBrowser();
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = config.getBrowserSize();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 20000;
