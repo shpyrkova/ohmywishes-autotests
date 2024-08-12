@@ -57,7 +57,7 @@ tasks.withType(Test).configureEach {
     }
 }
 
-task mobile_test(type: Test) {
+task android(type: Test) {
     useJUnitPlatform {
         includeTags("mobile")
     }
@@ -70,7 +70,7 @@ task mobile_test(type: Test) {
     }
 }
 
-task web_test(type: Test) {
+task web(type: Test) {
     useJUnitPlatform {
         includeTags("web")
     }
@@ -83,7 +83,7 @@ task web_test(type: Test) {
     }
 }
 
-task api_test(type: Test) {
+task api(type: Test) {
     useJUnitPlatform {
         includeTags("api")
     }
