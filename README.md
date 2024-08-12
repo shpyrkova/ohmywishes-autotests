@@ -1,13 +1,22 @@
 <h1>Проект автоматизации тестирования приложения <a target="_blank" href="https://ohmywishes.ru/"> Ohmywishes </a> </h1>
 
 <p align="center">
-<img alt="Ohmywishes" src="images/logo/ohmywishes.png"  >
+<img alt="Ohmywishes" src="media/logo/ohmywishes.png"  >
 </p>
 
 ## Содержание
 + [Описание](#Описание)
 + [Технологии и инструменты](#Технологии-и-инструменты)
 + [Реализованные проверки](#Реализованные-проверки)
++ [Запуск тестов](#Запуск-тестов)
+  + [Допустимые комбинации](#Допустимые-комбинации)
+  + [Запуск тестов на Jenkins](#Запуск-тестов-на-Jenkins)
+  + [Локальный запуск тестов](#Локальный-запуск-тестов)
++ [Пример выполнения WEB теста в Selenoid](#Пример-выполнения-WEB-теста-в-Selenoid)
++ [Интеграция с Allure Report](#Интеграция-с-Allure-report)
++ [Интеграция с Allure TestOps](#Интеграция-с-Allure-TestOps)
++ [Интеграция с Jira](#Интеграция-с-Jira)
++ [Уведомления в Telegram с использованием бота](#Уведомления-в-Telegram-с-использованием-бота)
 
 
 ## Описание
@@ -24,7 +33,7 @@ Ohmywishes — сервис для создания вишлистов. Можн
 - Возможность запуска тестов: локально, удалённо, по тегам
 - Использование `Faker` для генерации данных
 - Использование `Lombok` для моделей данных
-- Предусловия в WEB и API тестах создаются через API
+- Для ускорения тестов предусловия в WEB и API тестах создаются через API
 - Возможность запуска тестов напрямую из Allure TestOps
 - Интеграция с Jira
 - Уведомление о результатах прохождения в Telegram
@@ -37,21 +46,21 @@ Ohmywishes — сервис для создания вишлистов. Можн
 ## Технологии и инструменты
 
 <div align="center">
-<a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="images/logo/Idea.svg" width="50"/></a>
-<a href="https://github.com/"><img alt="GitHub" height="50" src="images/logo/GitHub.svg" width="50"/></a>  
-<a href="https://www.java.com/"><img alt="Java" height="50" src="images/logo/Java.svg" width="50"/></a>
-<a href="https://gradle.org/"><img alt="Gradle" height="50" src="images/logo/Gradle.svg" width="50"/></a>  
-<a href="https://junit.org/junit5/"><img alt="JUnit 5" height="50" src="images/logo/Junit5.svg" width="50"/></a>
-<a href="https://selenide.org/"><img alt="Selenide" height="50" src="images/logo/Selenide.svg" width="50"/></a>
-<a href="https://aerokube.com/selenoid/"><img alt="Selenoid" height="50" src="images/logo/Selenoid.svg" width="50"/></a>
-<a href="https://rest-assured.io/"><img alt="RestAssured" height="50" src="images/logo/RestAssured.svg" width="50"/></a>
-<a href="https://appium.io/"><img alt="Appium" height="50" src="images/logo/Appium.svg" width="50"/></a>
-<a href="https://developer.android.com/studio"><img alt="Android Studio" height="50" src="images/logo/Android_Studio.svg" width="50"/></a>
-<a href="https://www.jenkins.io/"><img alt="Jenkins" height="50" src="images/logo/Jenkins.svg" width="50"/></a>
-<a href="https://github.com/allure-framework/"><img alt="Allure Report" height="50" src="images/logo/Allure.svg" width="50"/></a>
-<a href="https://qameta.io/"><img alt="Allure TestOps" height="50" src="images/logo/Allure_TO.svg" width="50"/></a>
-<a href="https://www.atlassian.com/software/jira"><img alt="Jira" height="50" src="images/logo/Jira.svg" width="50"/></a>  
-<a href="https://telegram.org/"><img alt="Telegram" height="50" src="images/logo/Telegram.svg" width="50"/></a>
+<a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="media/logo/Idea.svg" width="50"/></a>
+<a href="https://github.com/"><img alt="GitHub" height="50" src="media/logo/GitHub.svg" width="50"/></a>  
+<a href="https://www.java.com/"><img alt="Java" height="50" src="media/logo/Java.svg" width="50"/></a>
+<a href="https://gradle.org/"><img alt="Gradle" height="50" src="media/logo/Gradle.svg" width="50"/></a>  
+<a href="https://junit.org/junit5/"><img alt="JUnit 5" height="50" src="media/logo/Junit5.svg" width="50"/></a>
+<a href="https://selenide.org/"><img alt="Selenide" height="50" src="media/logo/Selenide.svg" width="50"/></a>
+<a href="https://aerokube.com/selenoid/"><img alt="Selenoid" height="50" src="media/logo/Selenoid.svg" width="50"/></a>
+<a href="https://rest-assured.io/"><img alt="RestAssured" height="50" src="media/logo/RestAssured.svg" width="50"/></a>
+<a href="https://appium.io/"><img alt="Appium" height="50" src="media/logo/Appium.svg" width="50"/></a>
+<a href="https://developer.android.com/studio"><img alt="Android Studio" height="50" src="media/logo/Android_Studio.svg" width="50"/></a>
+<a href="https://www.jenkins.io/"><img alt="Jenkins" height="50" src="media/logo/Jenkins.svg" width="50"/></a>
+<a href="https://github.com/allure-framework/"><img alt="Allure Report" height="50" src="media/logo/Allure.svg" width="50"/></a>
+<a href="https://qameta.io/"><img alt="Allure TestOps" height="50" src="media/logo/Allure_TO.svg" width="50"/></a>
+<a href="https://www.atlassian.com/software/jira"><img alt="Jira" height="50" src="media/logo/Jira.svg" width="50"/></a>  
+<a href="https://telegram.org/"><img alt="Telegram" height="50" src="media/logo/Telegram.svg" width="50"/></a>
 </div>
 
 ## Реализованные проверки
@@ -74,8 +83,8 @@ Ohmywishes — сервис для создания вишлистов. Можн
 ### Mobile
 - [x] Авторизация по электронной почте
 - [x] Запрос на сброс пароля
-## Запуск тестов
 
+## Запуск тестов
 > [!NOTE]
 > Убедитесь, что у вас установлены Java, Gradle, IntelliJ IDEA и в качестве браузера используется Chrome
 >
@@ -121,6 +130,8 @@ gradle clean for_jenkins -Denv=remote
 ```
 gradle clean web
 ```
+Локально WEB тесты по умолчанию запускаются в браузере chrome, версия latest, размер браузера 1920x1080. <br>
+
 Для запуска на удаленном Selenoid нужно указать параметр env:
 ```
 gradle clean web -Denv=remote
@@ -132,7 +143,7 @@ gradle clean web -Denv=remote
 gradle clean api 
 ```
 
-#### Mobile
+#### MOBILE
 
 Для запуска мобильных тестов нужно: 
 1. Запустить Appium Server и устройство, на котором будут выполняться тесты.
@@ -152,4 +163,48 @@ gradle clean android -DdeviceHost=emulation
 gradle allureServe
 ```
 
+## Пример выполнения WEB теста в Selenoid
 
+> К результатам прогонов web-тестов, запущенных на Selenoid, прикладывается видео выполнения теста.
+<p align="center">
+  <img src="media/screencasts/web_test_screencast.gif">
+</p>
+
+
+# Интеграция с Allure report
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/40/allure/">Allure report</a></b>
+
+<img src="media/screenshots/allure-main-report.png">
+
+#### Развернутый результат прохождения теста:
+
+<img src="media/screenshots/allure-test-result.png">
+
+
+## Интеграция с Allure TestOps
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://allure.autotests.cloud/project/4364/dashboards">Allure TestOps</a></b>
+
+>Диаграммы прохождения тестов
+>
+<img src="media/screenshots/allure-testops-dashboards.png">
+
+## Интеграция с Jira
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1317">Jira</a></b>
+
+>В Jira создана задача на автоматизацию тестов
+>
+<img src="media/screenshots/jira-task.png">
+
+>В разделе `Allure:Test Cases` отображаются автоматизированные тесты из Allure TestOps
+> 
+<img src="media/screenshots/jira-with-allure-test-cases.png">
+
+>В разделе `Allure:Launches` отображается история запусков тестов из Allure TestOps, к которым прилинкована данная задача
+> 
+<img src="media/screenshots/jira-with-allure-launches.png">
+
+## Уведомления в Telegram с использованием бота
+
+> В Telegram создан канал, куда отправляются результаты прогона тестов в Jenkins. Бот после завершения прогона отправляет сообщение с отчетом о статусе прогона.
+>
+<img src="media/screenshots/telegram-notification.png">
