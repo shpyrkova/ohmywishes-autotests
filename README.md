@@ -94,10 +94,11 @@ flowchart LR
     C --> F[api]
     C --> G[android]
     C --> H[for_jenkins]
-    E --> I[-Denv=local]
-    E --> J[-Denv=remote]
-    G --> K[-DdeviceHost=emulator]
-    G --> L[-DdeviceHost=real]
+    H --> I[-Denv=remote]
+    E --> J[-Denv=local]
+    E --> K[-Denv=remote]
+    G --> L[-DdeviceHost=emulator]
+    G --> M[-DdeviceHost=real]
 ```
 
 ### Запуск тестов на Jenkins
