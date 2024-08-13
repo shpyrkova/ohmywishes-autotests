@@ -2,7 +2,7 @@ package config.mobile;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"classpath:mobile/${deviceHost}.properties"})
+@Config.Sources({"classpath:mobile/${device}.properties"})
 public interface LocalDriverConfig extends Config {
 
     @Key("osVersion")

@@ -103,8 +103,8 @@ flowchart LR
     H --> I[-Denv=remote]
     E --> J[-Denv=local]
     E --> K[-Denv=remote]
-    G --> L[-DdeviceHost=emulator]
-    G --> M[-DdeviceHost=real]
+    G --> L[-Ddevice=emulator]
+    G --> M[-Ddevice=real]
 ```
 
 ### Запуск тестов на Jenkins
@@ -145,12 +145,12 @@ gradle clean api
 Для запуска мобильных тестов нужно: 
 1. Запустить Appium Server и устройство, на котором будут выполняться тесты.
 2. Обновить параметры устройства в файлах resources/mobile/real.properties или resources/mobile/emulation.properties.
-3. Определить значение DdeviceHost:
-- <code>-DdeviceHost=emulator</code> : тесты будут запущены в эмуляторе. 
-- <code>-DdeviceHost=real</code> : тесты будут запущены на реальном подключенном устройстве. 
-4. Запустить следующую команду с указанием deviceHost:
+3. Определить значение Ddevice:
+- <code>-Ddevice=emulator</code> : тесты будут запущены в эмуляторе. 
+- <code>-Ddevice=real</code> : тесты будут запущены на реальном подключенном устройстве. 
+4. Запустить следующую команду с указанием device:
 ```
-gradle clean android -DdeviceHost=emulation
+gradle clean android -Ddevice=emulation
 ```
 
 #### Построение Allure отчета после локального запуска
