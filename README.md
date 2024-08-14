@@ -28,13 +28,13 @@ Ohmywishes — сервис для создания вишлистов. Можн
 
 
 **Особенности проекта**:
+- Возможность запуска тестов: локально, удалённо, по тегам
+- Возможность запуска тестов напрямую из Allure TestOps
 - `Page Object` для описания страниц WEB приложения
 - Использование `Owner` для придания тестам легкости конфигурации
-- Возможность запуска тестов: локально, удалённо, по тегам
 - Использование `Faker` для генерации данных
 - Использование `Lombok` для моделей данных
 - Для ускорения тестов предусловия в WEB и API тестах создаются через API
-- Возможность запуска тестов напрямую из Allure TestOps
 - Интеграция с Jira
 - Уведомление о результатах прохождения в Telegram
 - По результатам прохождения автотестов генерируется Allure отчет. Содержание отчета:
@@ -96,9 +96,9 @@ flowchart LR
     A(gradle) --> B(clean)
     B --> C{Выбрать тег}
     C --> D[test]
-    C --> E[web]
-    C --> F[api]
-    C --> G[android]
+    C --> E[web_tests]
+    C --> F[api_tests]
+    C --> G[android_tests]
     C --> H[for_jenkins]
     H --> I[-Denv=remote]
     E --> J[-Denv=local]
@@ -125,32 +125,32 @@ gradle clean for_jenkins -Denv=remote
 Команда без параметров по умолчанию запускает все тесты локально: 
 
 ```
-gradle clean web
+gradle clean web_tests
 ```
 Локально WEB тесты по умолчанию запускаются в браузере chrome, версия latest, размер браузера 1920x1080. <br>
 
 Для запуска на удаленном Selenoid нужно указать параметр env:
 ```
-gradle clean web -Denv=remote
+gradle clean web_tests -Denv=remote
 ```
 
 #### API
 Команда запускает все API тесты: 
 ```
-gradle clean api 
+gradle clean api_tests 
 ```
 
 #### MOBILE
 
 Для запуска мобильных тестов нужно: 
 1. Запустить Appium Server и устройство, на котором будут выполняться тесты.
-2. Обновить параметры устройства в файлах resources/mobile/real.properties или resources/mobile/emulation.properties.
+2. Обновить параметры устройства в файлах <code>resources/mobile/real.properties</code> или <code>resources/mobile/emulation.properties</code>.
 3. Определить значение Ddevice:
 - <code>-Ddevice=emulator</code> : тесты будут запущены в эмуляторе. 
 - <code>-Ddevice=real</code> : тесты будут запущены на реальном подключенном устройстве. 
 4. Запустить следующую команду с указанием device:
 ```
-gradle clean android -Ddevice=emulation
+gradle clean android_tests -Ddevice=emulation
 ```
 
 #### Построение Allure отчета после локального запуска
