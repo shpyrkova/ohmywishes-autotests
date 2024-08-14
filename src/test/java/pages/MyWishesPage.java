@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MyWishesPage {
 
-    public final String url = "/users/surkova";
     public final SelenideElement createWishButton = $(byText("Загадать желание"));
     private final SelenideElement secretSantaLink = $("[href='/santa']");
     private final SelenideElement fulfilledListLink = $("[href='/fulfilled']");
@@ -34,8 +33,8 @@ public class MyWishesPage {
 
     WishItemComponent wishItemComponent = new WishItemComponent();
 
-    public void openPage() {
-        open(url);
+    public void openPage(String username) {
+        open("/users/" + username);
     }
 
     public void secretSantaLinkClick() {

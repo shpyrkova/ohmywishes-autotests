@@ -6,6 +6,7 @@ import models.lombok.UserCustomList;
 import models.lombok.WishItem;
 import org.openqa.selenium.Cookie;
 import pages.MyWishesPage;
+import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -24,7 +25,7 @@ public class CommonSteps {
     @Step("Открыть страницу Мои желания")
     public void openMyWishesPage() {
         MyWishesPage myWishesPage = new MyWishesPage();
-        myWishesPage.openPage();
+        myWishesPage.openPage(TestDataGenerator.username);
     }
 
     @Step("Создать желание через API и получить его id")
