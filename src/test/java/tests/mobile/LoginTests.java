@@ -9,7 +9,7 @@ import static io.qameta.allure.Allure.step;
 
 @Tag("mobile")
 @DisplayName("Авторизация в приложении")
-public class LoginTests extends TestBase {
+public class LoginTests extends TestBaseMobile {
 
     @Test
     @DisplayName("Авторизация по электронной почте")

@@ -12,7 +12,7 @@ import static io.qameta.allure.Allure.step;
 @Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Работа с желаниями пользователя на странице 'Мои желания'")
-public class MyWishesTests extends TestBase {
+public class MyWishesTests extends TestBaseWeb {
 
     @BeforeEach
     public void authorizeAndOpenMyWishesPage() {

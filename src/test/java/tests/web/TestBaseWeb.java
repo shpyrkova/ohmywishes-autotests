@@ -23,7 +23,7 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class TestBase {
+public class TestBaseWeb {
 
     protected final WebTestsHelper webTestsHelper = new WebTestsHelper();
     private final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());

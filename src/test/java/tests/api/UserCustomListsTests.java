@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Кастомные списки желаний пользователя")
-public class UserCustomListsTests extends TestBase {
+public class UserCustomListsTests extends TestBaseApi {
 
     @Test
     @DisplayName("Создание списка желаний")

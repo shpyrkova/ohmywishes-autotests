@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 @Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Игра 'Тайный санта'")
-public class SantaTests extends TestBase {
+public class SantaTests extends TestBaseWeb {
 
     final SantaPage santaPage = new SantaPage();
 

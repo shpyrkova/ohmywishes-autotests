@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 @Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Желания пользователя")
-public class UserWishesTests extends TestBase {
+public class UserWishesTests extends TestBaseApi {
 
     @Test
     @DisplayName("Получение данных о желании неавторизованным пользователем")

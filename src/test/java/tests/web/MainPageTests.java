@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Возможности главной страницы без авторизации")
-public class MainPageTests extends TestBase {
+public class MainPageTests extends TestBaseWeb {
 
     @Test
     @DisplayName("Для неавторизованного пользователя по нажатию 'Мои желания' открывается страница авторизации")
@@ -22,9 +22,7 @@ public class MainPageTests extends TestBase {
             open("");
         });
 
-        step("Нажать Мои желания", () -> {
-            mainPage.myWishesLinkClick();
-        });
+        step("Нажать Мои желания", mainPage::myWishesLinkClick);
 
         step("Открыта страница авторизации", () -> {
             loginPage.byEmailButton.shouldBe(Condition.visible);

@@ -7,7 +7,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import steps.CommonSteps;
 
-public class TestBase {
+public class TestBaseApi {
 
     final ApiClient apiClient = new ApiClient();
     final CommonSteps steps = new CommonSteps();

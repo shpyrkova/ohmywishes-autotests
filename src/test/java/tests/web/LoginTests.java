@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Epic("Web тесты")
 @Tag("web")
 @DisplayName("WEB. Авторизация по электронной почте")
-public class LoginTests extends TestBase {
+public class LoginTests extends TestBaseWeb {
 
     @Test
     @DisplayName("Успешная авторизация по email и паролю")

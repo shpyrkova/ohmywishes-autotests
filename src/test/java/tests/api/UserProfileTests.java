@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Epic("API тесты")
 @Tag("api")
 @DisplayName("API. Профиль пользователя")
-public class UserProfileTests extends TestBase {
+public class UserProfileTests extends TestBaseApi {
 
     @Test
     @DisplayName("Получение данных о пользователе (о себе)")
