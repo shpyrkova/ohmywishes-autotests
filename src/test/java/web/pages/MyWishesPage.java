@@ -1,7 +1,7 @@
-package pages;
+package web.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.WishItemComponent;
+import web.pages.components.WishItemComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;

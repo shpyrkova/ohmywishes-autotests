@@ -1,6 +1,6 @@
 package api;
 
-import config.CredentialsConfig;
+import config.common.CredentialsConfig;
 import io.restassured.response.Response;
 import models.lombok.api.LoginRequestBody;
 import models.lombok.UserCustomList;

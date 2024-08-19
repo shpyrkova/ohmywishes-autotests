@@ -1,4 +1,4 @@
-package config;
+package config.common;
 
 import org.aeonbits.owner.Config;
 

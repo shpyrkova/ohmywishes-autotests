@@ -2,8 +2,8 @@ package tests.web;
 
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.*;
-import pages.UserCustomListPage;
-import pages.FulfilledListPage;
+import web.pages.UserCustomListPage;
+import web.pages.FulfilledListPage;
 import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Condition.visible;

@@ -1,11 +1,11 @@
-package steps;
+package web.steps;
 
 import api.ApiClient;
 import io.qameta.allure.Step;
 import models.lombok.UserCustomList;
 import models.lombok.WishItem;
 import org.openqa.selenium.Cookie;
-import pages.MyWishesPage;
+import web.pages.MyWishesPage;
 import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Selenide.open;

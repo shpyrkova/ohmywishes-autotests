@@ -1,7 +1,7 @@
 package config.mobile;
 
 import com.codeborne.selenide.Configuration;
-import drivers.LocalMobileDriver;
+import mobile.drivers.LocalMobileDriver;
 
 public class MobileDriverProvider {
 

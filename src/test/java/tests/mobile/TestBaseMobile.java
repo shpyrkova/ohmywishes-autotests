@@ -2,7 +2,7 @@ package tests.mobile;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.CredentialsConfig;
+import config.common.CredentialsConfig;
 import config.mobile.MobileDriverProvider;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;

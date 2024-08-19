@@ -1,11 +1,11 @@
 package tests.api;
 
 import api.ApiClient;
-import config.ApiConfig;
+import config.common.ApiConfig;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
-import steps.CommonSteps;
+import web.steps.CommonSteps;
 
 public class TestBaseApi {
 

@@ -2,8 +2,8 @@ package tests.web;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.ApiConfig;
-import config.CredentialsConfig;
+import config.common.ApiConfig;
+import config.common.CredentialsConfig;
 import config.web.WebDriverConfig;
 import config.web.WebDriverProvider;
 import helpers.Attachments;
@@ -14,10 +14,10 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.MyWishesPage;
-import steps.CommonSteps;
+import web.pages.LoginPage;
+import web.pages.MainPage;
+import web.pages.MyWishesPage;
+import web.steps.CommonSteps;
 
 import java.util.Map;
 
