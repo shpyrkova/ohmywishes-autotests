@@ -15,6 +15,7 @@ public class MyWishesPage {
     private final SelenideElement fulfilledListLink = $("[href='/fulfilled']");
     private final SelenideElement addWishItemToListButton = $(byText("Добавить в список"));
     public final SelenideElement wishUpdatedMessage = $(byText("Желание обновлено"));
+
     public SelenideElement myWishesLink(String username) {
         return $(String.format("[href='/users/%s']", username)).shouldHave(text("Мои желания"));
     }
@@ -62,6 +63,5 @@ public class MyWishesPage {
     public void fulfilledListLinkClick() {
         fulfilledListLink.click();
     }
-
 
 }

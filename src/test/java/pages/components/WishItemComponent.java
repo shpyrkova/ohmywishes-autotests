@@ -14,7 +14,10 @@ public class WishItemComponent {
     private final SelenideElement wishCurrencyInput = $(byText("Цена")).sibling(0);
     private final SelenideElement wishPictureInput = $("input[type=file]");
     private final SelenideElement submitButton = $(byText("Загадать"));
-    private SelenideElement wishCurrencyName(String currency) { return $(byText(currency)); }
+
+    private SelenideElement wishCurrencyName(String currency) {
+        return $(byText(currency));
+    }
 
     public void fillAllWishItemFields(String title, String link, String description, String price, String currency, String filePath) {
         wishTitleInput.setValue(title);

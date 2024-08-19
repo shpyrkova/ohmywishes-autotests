@@ -1,6 +1,7 @@
 package config.web;
 
 import org.aeonbits.owner.Config;
+
 import java.net.URL;
 
 @Config.Sources({

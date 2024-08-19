@@ -22,15 +22,14 @@ public class UserProfileTests extends TestBase {
     @DisplayName("Получение данных о пользователе (о себе)")
     void getUserProfileTest() {
 
-        Response response = step("Запросить данные о пользователе", () ->
-                apiClient.getOwnUserInfo());
+        Response response = step("Запросить данные о пользователе", apiClient::getOwnUserInfo);
         User userResponseData = response.as(GetOwnUserInfoResponseBody.class).getItem();
         UserSettings userResponseDataSettings = userResponseData.getSettings();
 
         User expectedUserData = ExpectedUserData.getExpectedUser();
         UserSettings expectedUserSettings = expectedUserData.getSettings();
 
-        step("Проверить, что основные поля в ответе корректны", ()-> {
+        step("Проверить, что основные поля в ответе корректны", () -> {
             assertThat(response.statusCode()).isEqualTo(200);
             assertThat(userResponseData.getId()).isEqualTo(expectedUserData.getId());
             assertThat(userResponseData.getBirthday()).isEqualTo(expectedUserData.getBirthday());
@@ -48,7 +47,7 @@ public class UserProfileTests extends TestBase {
             assertThat(userResponseData.getAvatar()).isNotNull();
         });
 
-        step("Проверить, что настройки пользователя в ответе корректны", ()-> {
+        step("Проверить, что настройки пользователя в ответе корректны", () -> {
             assertThat(userResponseDataSettings.isPrivateWishesBlurred()).isEqualTo(expectedUserSettings.isPrivateWishesBlurred());
             assertThat(userResponseDataSettings.isReservedWishesCounterEnabled()).isEqualTo(expectedUserSettings.isReservedWishesCounterEnabled());
             assertThat(userResponseDataSettings.isSecretSantaAllYearAvailable()).isEqualTo(expectedUserSettings.isSecretSantaAllYearAvailable());

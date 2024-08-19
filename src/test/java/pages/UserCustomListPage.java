@@ -14,6 +14,7 @@ public class UserCustomListPage {
     public void openPage(String userCustomListId) {
         open(url(userCustomListId));
     }
+
     public SelenideElement wishItemCard(String listId, String wishId) {
         return $(String.format("[href='/users/surkova/lists/%s/wishes/%s']", listId, wishId));
     }
