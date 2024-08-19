@@ -15,8 +15,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
 
-    MobileCommonSteps steps = new MobileCommonSteps();
-    protected static CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    final MobileCommonSteps steps = new MobileCommonSteps();
+    protected static final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
 
     @BeforeAll
     static void beforeAll() {

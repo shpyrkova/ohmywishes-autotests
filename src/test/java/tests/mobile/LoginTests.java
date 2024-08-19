@@ -44,7 +44,7 @@ public class LoginTests extends TestBase {
             $(id("com.ohmywishes.start:id/email")).click();
         });
 
-        step("Нажать 'Забылм пароль'", () -> {
+        step("Нажать 'Забыли пароль'", () -> {
             $(id("com.ohmywishes.start:id/textViewSignInEmailForgotPassword")).click();
         });
 

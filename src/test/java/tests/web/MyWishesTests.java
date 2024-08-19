@@ -19,8 +19,8 @@ public class MyWishesTests extends TestBase {
         steps.setAuthCookie();
     }
 
-    FulfilledListPage fulfilledListPage = new FulfilledListPage();
-    UserCustomListPage userCustomListPage = new UserCustomListPage();
+    final FulfilledListPage fulfilledListPage = new FulfilledListPage();
+    final UserCustomListPage userCustomListPage = new UserCustomListPage();
 
     @Test
     @DisplayName("Создание нового желания с заполнением всех полей")

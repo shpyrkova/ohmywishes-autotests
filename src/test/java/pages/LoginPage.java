@@ -12,8 +12,8 @@ public class LoginPage {
     private final SelenideElement emailInput = $("#email");
     private final SelenideElement passwordInput = $("#password");
     private final SelenideElement nextButton = $(byText("Далее"));
-    public SelenideElement byEmailButton = $(byText("Электронная почта"));
-    public SelenideElement wrongEmailOrPasswordMessage = $(byText("Введен неверный email или пароль"));
+    public final SelenideElement byEmailButton = $(byText("Электронная почта"));
+    public final SelenideElement wrongEmailOrPasswordMessage = $(byText("Введен неверный email или пароль"));
 
     public void login(String email, String password) {
         emailInput.setValue(email);

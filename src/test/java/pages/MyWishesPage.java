@@ -31,7 +31,7 @@ public class MyWishesPage {
         return wishItemCard(id).$(byText("Опции"));
     }
 
-    WishItemComponent wishItemComponent = new WishItemComponent();
+    final WishItemComponent wishItemComponent = new WishItemComponent();
 
     public void openPage(String username) {
         open("/users/" + username);

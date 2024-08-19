@@ -3,7 +3,6 @@ package api;
 import config.CredentialsConfig;
 import io.restassured.response.Response;
 import models.lombok.api.LoginRequestBody;
-import models.lombok.SantaGame;
 import models.lombok.UserCustomList;
 import models.lombok.WishItem;
 import org.aeonbits.owner.ConfigFactory;
@@ -15,7 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
 
-    protected static CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    protected static final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
 
     public String generateToken() {
 
@@ -31,18 +30,6 @@ public class ApiClient {
                 .response();
 
         return response.path("token");
-    }
-
-    public Response getAllUserWishes() {
-
-        return given(authorizedRequestSpec)
-                .queryParam("size", "24")
-                .queryParam("page", "1")
-                .get("/v2/users/self/wish-lists/all/wishes")
-                .then()
-                .spec(responseSpec)
-                .extract()
-                .response();
     }
 
     public Response createWishItem(String title, String description) {
@@ -111,25 +98,15 @@ public class ApiClient {
                 .response();
     }
 
-    public Response addWishItemToList(String wishId, String wishTitle, String listId) {
+    public void addWishItemToList(String wishId, String wishTitle, String listId) {
 
         WishItem updatedWishItem = new WishItem();
         updatedWishItem.setTitle(wishTitle);
         updatedWishItem.setWishLists(List.of(listId));
 
-        return given(authorizedRequestSpec)
+        given(authorizedRequestSpec)
                 .body(updatedWishItem)
                 .put("/v2/users/self/wishes/" + wishId)
-                .then()
-                .spec(responseSpec)
-                .extract()
-                .response();
-    }
-
-    public Response getActiveGames() {
-
-        return given(authorizedRequestSpec)
-                .get("/v2/secret-santa/games/active")
                 .then()
                 .spec(responseSpec)
                 .extract()
@@ -146,28 +123,6 @@ public class ApiClient {
                 .spec(responseSpec)
                 .extract()
                 .response();
-    }
-
-    public String getWishItemIdFromWishlistByWishTitle(String title) {
-        Response response = getAllUserWishes();
-        List<WishItem> wishlist = response.jsonPath().getList("", WishItem.class);
-        WishItem foundItem = wishlist.stream()
-                .filter(item -> item.getTitle().equals(title))
-                .findFirst()
-                .orElse(null);
-
-        return foundItem.getUnderscoreId();
-    }
-
-    public String getGameIdFromGameListByGameTitle(String title) {
-        Response response = getActiveGames();
-        List<SantaGame> gamelist = response.jsonPath().getList("", SantaGame.class);
-        SantaGame game = gamelist.stream()
-                .filter(item -> item.getTitle().equals(title))
-                .findFirst()
-                .orElse(null);
-
-        return game.getId();
     }
 
 }

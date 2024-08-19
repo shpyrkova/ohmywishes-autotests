@@ -15,7 +15,7 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("WEB. Игра 'Тайный санта'")
 public class SantaTests extends TestBase {
 
-    SantaPage santaPage = new SantaPage();
+    final SantaPage santaPage = new SantaPage();
 
     @Test
     @DisplayName("Создание игры Тайный санта с заполнением всех полей")

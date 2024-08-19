@@ -12,16 +12,16 @@ import static io.restassured.http.ContentType.JSON;
 
 public class RequestResponseSpecs {
 
-    static ApiClient apiClient = new ApiClient();
+    static final ApiClient apiClient = new ApiClient();
 
-    public static RequestSpecification requestSpec = with()
+    public static final RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
             .log().headers()
             .contentType(JSON);
 
-    public static RequestSpecification authorizedRequestSpec = with()
+    public static final RequestSpecification authorizedRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
@@ -29,7 +29,7 @@ public class RequestResponseSpecs {
             .contentType(JSON)
             .header("X-Access-Token", apiClient.generateToken());
 
-    public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
+    public static final ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .build();

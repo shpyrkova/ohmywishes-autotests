@@ -1,6 +1,5 @@
 package tests.web;
 
-import api.ApiClient;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ApiConfig;
@@ -26,16 +25,15 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    protected WebTestsHelper webTestsHelper = new WebTestsHelper();
+    protected final WebTestsHelper webTestsHelper = new WebTestsHelper();
     private final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
-    public ApiClient apiClient = new ApiClient();
-    CommonSteps steps = new CommonSteps();
-    protected static CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
-    protected static ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class, System.getProperties());
+    final CommonSteps steps = new CommonSteps();
+    protected static final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    protected static final ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class, System.getProperties());
 
-    MainPage mainPage = new MainPage();
-    LoginPage loginPage = new LoginPage();
-    MyWishesPage myWishesPage = new MyWishesPage();
+    final MainPage mainPage = new MainPage();
+    final LoginPage loginPage = new LoginPage();
+    final MyWishesPage myWishesPage = new MyWishesPage();
 
     @BeforeAll
     public static void beforeAll() {
