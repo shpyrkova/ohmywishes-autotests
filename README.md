@@ -9,9 +9,9 @@
 + [Технологии и инструменты](#Технологии-и-инструменты)
 + [Реализованные проверки](#Реализованные-проверки)
 + [Запуск тестов](#Запуск-тестов)
-  + [Допустимые комбинации](#Допустимые-комбинации)
-  + [Запуск тестов на Jenkins](#Запуск-тестов-на-Jenkins)
-  + [Локальный запуск тестов](#Локальный-запуск-тестов)
+  + Допустимые комбинации
+  + Запуск тестов на Jenkins
+  + Локальный запуск тестов
 + [Пример выполнения WEB теста в Selenoid](#Пример-выполнения-WEB-теста-в-Selenoid)
 + [Интеграция с Allure Report](#Интеграция-с-Allure-report)
 + [Интеграция с Allure TestOps](#Интеграция-с-Allure-TestOps)
@@ -27,7 +27,9 @@ Ohmywishes — сервис для создания вишлистов. Можн
 - Мобильные тесты на Android <br/>
 
 
-**Особенности проекта**:
+## Особенности проекта, технологии и инструменты
+
+### Особенности проекта
 - Возможность запуска тестов: локально, удалённо, по тегам
 - Возможность запуска тестов напрямую из Allure TestOps
 - `Page Object` для описания страниц WEB приложения
@@ -35,15 +37,8 @@ Ohmywishes — сервис для создания вишлистов. Можн
 - Использование `Faker` для генерации данных
 - Использование `Lombok` для моделей данных
 - Для ускорения тестов предусловия в WEB и API тестах создаются через API
-- Интеграция с Jira
-- Уведомление о результатах прохождения в Telegram
-- По результатам прохождения автотестов генерируется Allure отчет. Содержание отчета:
-    - Шаги теста
-    - Скриншот страницы (экрана) на последнем шаге
-    - Логи консоли браузера
-    - Видео выполнения автотеста
 
-## Технологии и инструменты
+### Технологии и инструменты
 
 <div align="center">
 <a href="https://www.jetbrains.com/idea/"><img alt="InteliJ IDEA" height="50" src="media/logo/Idea.svg" width="50"/></a>
@@ -62,6 +57,16 @@ Ohmywishes — сервис для создания вишлистов. Можн
 <a href="https://www.atlassian.com/software/jira"><img alt="Jira" height="50" src="media/logo/Jira.svg" width="50"/></a>  
 <a href="https://telegram.org/"><img alt="Telegram" height="50" src="media/logo/Telegram.svg" width="50"/></a>
 </div>
+
+- Основа тестов: `Java` + `Gradle` + `JUnit5`
+- Разработка в IDE `InteliJ IDEA`
+- Репозиторий `Github`
+- `Selenide` для WEB и Mobile-тестов
+- Mobile-тесты: `Appium`, `Appium Inspector` и запуск эмуляторов на Virtual Device Manager в `Android Studio`
+- Запуск WEB-тестов на `Selenoid`
+- Уведомление о результатах прохождения в `Telegram`
+- Интеграция `Allure TestOps` с `Jira`
+- Генерация `Allure` отчета по результатам прохождения тестов
 
 ## Реализованные проверки
 ### WEB
@@ -107,7 +112,7 @@ flowchart LR
     G --> M[-Ddevice=real]
 ```
 
-### Запуск тестов на Jenkins
+### Запуск тестов на <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/">Jenkins</a></b>
 Так как тесты на Android запускаются только локально на эмуляторе или реальном устройстве, для Jenkins выделена отдельная задача for_jenkins, запускающая все WEB и API тесты. <br>
 Для запуска на jenkins необходимо также указывать параметр удаленного запуска -Denv=remote. 
 ```
@@ -169,11 +174,16 @@ gradle allureServe
 
 
 # Интеграция с Allure report
-Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/40/allure/">Allure report</a></b>
+Ссылка доступна только с авторизацией: <b><a target="_blank" href="https://jenkins.autotests.cloud/job/shpyrkova-ohmywishes-autotests/allure/">Allure report</a></b>
 
 <img src="media/screenshots/allure-main-report.png">
 
-#### Развернутый результат прохождения теста:
+#### Развернутый результат прохождения теста
+Содержание отчета:
+- Шаги теста
+- Скриншот страницы (экрана) на последнем шаге
+- Логи консоли браузера
+- Видео выполнения автотеста
 
 <img src="media/screenshots/allure-test-result.png">
 
