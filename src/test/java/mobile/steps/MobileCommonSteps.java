@@ -1,4 +1,4 @@
-package tests.mobile;
+package mobile.steps;
 
 import io.qameta.allure.Step;
 

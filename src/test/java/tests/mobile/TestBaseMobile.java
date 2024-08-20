@@ -5,6 +5,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import config.common.UserDataConfig;
 import config.mobile.MobileDriverProvider;
 import io.qameta.allure.selenide.AllureSelenide;
+import mobile.steps.MobileCommonSteps;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
