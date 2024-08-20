@@ -4,6 +4,7 @@ import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.UserCustomList;
 import models.lombok.WishItem;
+import models.lombok.api.GetWishItemResponseBody;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -18,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UserCustomListsTests extends TestBaseApi {
 
     String token;
+
     @BeforeEach
     public void authorizeAndOpenMyWishesPage() {
         token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
@@ -56,9 +58,17 @@ public class UserCustomListsTests extends TestBaseApi {
 
         Response response = step("Удалить список желаний", () -> apiClient.deleteUserCustomList(token, listId));
 
-        step("Проверить, что желание из списка осталось в системе", () -> {
+        step("Проверить, что запрос на удаление вернул код 204", () -> {
             assertThat(response.statusCode()).isEqualTo(204);
-            assertThat(apiClient.getWishItemAuthorized(token, wishItemId).statusCode()).isEqualTo(200);
+        });
+
+        step("Проверить, что желание из удаленного вишлиста осталось в системе", () -> {
+            Response wishResponse = apiClient.getWishItemAuthorized(token, wishItemId);
+            GetWishItemResponseBody responseBody = wishResponse.as(GetWishItemResponseBody.class);
+            WishItem responseWishItem = responseBody.getItem();
+            assertThat(wishResponse.statusCode()).isEqualTo(200);
+            assertThat(responseWishItem.getTitle()).isEqualTo(wishItemTitle);
+            assertThat(responseWishItem.getDescription()).isEqualTo(wishItemDescription);
         });
     }
 
