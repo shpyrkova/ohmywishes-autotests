@@ -1,0 +1,51 @@
+{
+  "id": "bd669f93e2c888b951423109",
+  "username": "surkova",
+  "avatar": {
+    "url": "https://static.ohmywishes.com/images/user-avatar/2024/08/14/1CECRhTEeXthVc21PVfXaN.webp",
+    "width": 400,
+    "height": 381,
+    "thumbnails": [
+      {
+        "url": "https://static.ohmywishes.com/images/thumbnail/2024/08/14/1CECRhhiHVAVdmvkVP9eSs.webp",
+        "width": 80,
+        "height": 76
+      }
+    ]
+  },
+  "backgroundImage": null,
+  "about": "something about me",
+  "birthday": "2000-07-01",
+  "sex": "f",
+  "email": "shpyrkova@gmail.com",
+  "isEmailConfirmed": true,
+  "lastname": "Monster",
+  "firstname": "Gentle",
+  "fullname": "Gentle Monster",
+  "isPro": false,
+  "accountType": "user",
+  "settings": {
+    "socialProfiles": [
+
+    ],
+    "isSystemNewsReceiveAllowed": false,
+    "isNewsReceiveAllowed": false,
+    "isSecretSantaAllYearAvailable": true,
+    "isPrivateWishesBlurred": true,
+    "isReservedWishesCounterEnabled": true,
+    "defaultCurrency": null,
+    "defaultLocale": null
+  },
+  "appSettings": {
+    "startScreen": "recommendations"
+  },
+  "stats": {
+    "followersCount": 0,
+    "followingsCount": 0,
+    "wishesCount": 15,
+    "wishListsCount": 8,
+    "hasWishesReservedBySomebody": false,
+    "wishesCountReservedBySomebody": 0
+  },
+  "legalInfo": null
+}
