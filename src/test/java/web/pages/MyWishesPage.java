@@ -17,20 +17,20 @@ public class MyWishesPage {
     private final SelenideElement addWishItemToListButton = $(byText("Добавить в список"));
     public final SelenideElement wishUpdatedMessage = $(byText("Желание обновлено"));
 
-    public SelenideElement myWishesLink(String username) {
+    public SelenideElement getMyWishesLink(String username) {
         return $(String.format("[href='/users/%s']", username)).shouldHave(text("Мои желания"));
     }
 
-    public SelenideElement wishItemCard(String id) {
-        return $(String.format("[href='/users/surkova/wishes/%s']", id));
+    public SelenideElement getWishItemCard(String username, String id) {
+        return $(String.format("[href='/users/%s/wishes/%s']", username, id));
     }
 
-    public SelenideElement wishItemTitle(String title) {
+    public SelenideElement getWishItemTitle(String title) {
         return $(byText(title));
     }
 
-    public SelenideElement wishItemOptions(String id) {
-        return wishItemCard(id).$(byText("Опции"));
+    public SelenideElement getWishItemOptions(String username, String id) {
+        return getWishItemCard(username, id).$(byText("Опции"));
     }
 
     final WishItemComponent wishItemComponent = new WishItemComponent();
@@ -39,7 +39,7 @@ public class MyWishesPage {
         open("/users/" + username);
     }
 
-    public void secretSantaLinkClick() {
+    public void clickSecretSantaLink() {
         secretSantaLink.click();
     }
 
@@ -49,19 +49,19 @@ public class MyWishesPage {
         wishItemComponent.submitButtonClick();
     }
 
-    public void addWishItemToList(String id, String listName) {
-        wishItemOptions(id).click();
+    public void addWishItemToList(String username, String id, String listName) {
+        getWishItemOptions(username, id).click();
         addWishItemToListButton.hover();
         addWishItemToListButton.$(byText(listName)).scrollIntoView(true).click();
         addWishItemToListButton.$(byText("Сохранить")).click();
     }
 
-    public void markWishItemAsGifted(String id) {
-        wishItemOptions(id).click();
+    public void markWishItemAsGift(String username, String id) {
+        getWishItemOptions(username, id).click();
         $(byText("Подарили")).click();
     }
 
-    public void fulfilledListLinkClick() {
+    public void clickFulfilledListLink() {
         fulfilledListLink.click();
     }
 

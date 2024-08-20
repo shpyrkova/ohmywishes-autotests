@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class FulfilledListPage {
 
-    public SelenideElement fulfilledWishItemCard(String id) {
+    public SelenideElement getFulfilledWishItemCard(String id) {
         return $(String.format("[href='/fulfilled/wishes/%s']", id));
     }
 

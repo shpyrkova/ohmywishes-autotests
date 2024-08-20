@@ -25,17 +25,17 @@ public class LoginTests extends TestBaseWeb {
 
         step("Открыть главную страницу, нажать Войти", () -> {
             open("");
-            mainPage.loginButtonClick();
+            mainPage.clickLoginButton();
         });
 
         step("Войти по электронной почте", () -> {
-            loginPage.byEmail();
+            loginPage.clickByEmailButton();
             loginPage.login(email, password);
         });
 
         step("После авторизации есть меню Мои желания со ссылкой на профиль пользователя", () -> {
             String username = TestDataGenerator.username;
-            myWishesPage.myWishesLink(username).shouldBe(visible);
+            myWishesPage.getMyWishesLink(username).shouldBe(visible);
         });
 
     }
@@ -49,11 +49,11 @@ public class LoginTests extends TestBaseWeb {
 
         step("Открыть главную страницу, нажать Войти", () -> {
             open("");
-            mainPage.loginButtonClick();
+            mainPage.clickLoginButton();
         });
 
         step("Войти по электронной почте с невалидным паролем", () -> {
-            loginPage.byEmail();
+            loginPage.clickByEmailButton();
             loginPage.login(email, wrongPassword);
         });
 

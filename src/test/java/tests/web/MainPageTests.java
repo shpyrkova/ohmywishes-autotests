@@ -22,7 +22,7 @@ public class MainPageTests extends TestBaseWeb {
             open("");
         });
 
-        step("Нажать Мои желания", mainPage::myWishesLinkClick);
+        step("Нажать Мои желания", mainPage::clickMyWishesLink);
 
         step("Открыта страница авторизации", () -> {
             loginPage.byEmailButton.shouldBe(Condition.visible);

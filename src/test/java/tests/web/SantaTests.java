@@ -28,7 +28,7 @@ public class SantaTests extends TestBaseWeb {
         String endDate = TestDataGenerator.generateGameEndDate();
 
         step("Нажать Тайный санта -> Создать игру", () -> {
-            myWishesPage.secretSantaLinkClick();
+            myWishesPage.clickSecretSantaLink();
             santaPage.createGameButtonClick();
         });
 

@@ -10,11 +10,11 @@ public class MainPage {
     private final SelenideElement loginButton = $(byText("Войти"));
     private final SelenideElement myWishesLink = $(byText("Мои желания"));
 
-    public void loginButtonClick() {
+    public void clickLoginButton() {
         loginButton.click();
     }
 
-    public void myWishesLinkClick() {
+    public void clickMyWishesLink() {
         myWishesLink.click();
     }
 

@@ -48,7 +48,7 @@ public class MyWishesTests extends TestBaseWeb {
         });
 
         step("Проверить, что желание появилось в списке желаний", () -> {
-            myWishesPage.wishItemTitle(wishItemTitle).shouldBe(visible);
+            myWishesPage.getWishItemTitle(wishItemTitle).shouldBe(visible);
         });
     }
 
@@ -58,17 +58,18 @@ public class MyWishesTests extends TestBaseWeb {
         String wishItemTitle = TestDataGenerator.generateWishItemTitle();
         String wishItemDescription = TestDataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
+        String username = TestDataGenerator.username;
         steps.openMyWishesPage();
 
         step("Отметить желание подаренным", () -> {
-            myWishesPage.wishItemCard(wishItemId).hover();
-            myWishesPage.markWishItemAsGifted(wishItemId);
+            myWishesPage.getWishItemCard(username, wishItemId).hover();
+            myWishesPage.markWishItemAsGift(username, wishItemId);
         });
 
         step("Желание должно пропасть из списка желаний и появиться в списке исполненных", () -> {
-            myWishesPage.wishItemCard(wishItemId).shouldNotBe(visible);
-            myWishesPage.fulfilledListLinkClick();
-            fulfilledListPage.fulfilledWishItemCard(wishItemId).shouldBe(visible);
+            myWishesPage.getWishItemCard(username, wishItemId).shouldNotBe(visible);
+            myWishesPage.clickFulfilledListLink();
+            fulfilledListPage.getFulfilledWishItemCard(wishItemId).shouldBe(visible);
         });
     }
 
@@ -81,16 +82,17 @@ public class MyWishesTests extends TestBaseWeb {
         String listDescription = TestDataGenerator.generateUserCustomListDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
         String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
+        String username = TestDataGenerator.username;
         steps.openMyWishesPage();
 
         step("Добавить желание в список желаний", () -> {
-            myWishesPage.addWishItemToList(wishItemId, listTitle);
+            myWishesPage.addWishItemToList(username, wishItemId, listTitle);
             myWishesPage.wishUpdatedMessage.shouldBe(visible);
         });
 
         step("Проверить, что желание появилось в списке", () -> {
             userCustomListPage.openPage(listId);
-            userCustomListPage.wishItemCard(listId, wishItemId).shouldBe(visible);
+            userCustomListPage.wishItemCard(username, listId, wishItemId).shouldBe(visible);
         });
     }
 

@@ -21,7 +21,7 @@ public class LoginPage {
         nextButton.click();
     }
 
-    public void byEmail() {
+    public void clickByEmailButton() {
         byEmailButton.click();
     }
 
