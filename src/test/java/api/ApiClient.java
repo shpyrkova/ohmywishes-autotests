@@ -28,15 +28,13 @@ public class ApiClient {
         return response.path("token");
     }
 
-    public Response createWishItem(String title, String description) {
+    public Response createWishItem(String token, WishItem wishItem) {
 
-        WishItem wishItemData = WishItem.builder()
-                .title(title)
-                .description(description)
-                .build();
+        System.out.println("!!!!!!!!!!!!!!!" + wishItem);
+//        WishItem wishBody =
 
-        return given(authorizedRequestSpec)
-                .body(wishItemData)
+        return given(authorizedRequestSpec(token))
+                .body(wishItem)
                 .post("/v2/users/self/wishes")
                 .then()
                 .spec(responseSpec)
@@ -44,8 +42,8 @@ public class ApiClient {
                 .response();
     }
 
-    public Response getWishItemAuthorized(String id) {
-        return given(authorizedRequestSpec)
+    public Response getWishItemAuthorized(String token, String id) {
+        return given(authorizedRequestSpec(token))
                 .get("/v3/wishes/" + id)
                 .then()
                 .spec(responseSpec)
@@ -62,8 +60,8 @@ public class ApiClient {
                 .response();
     }
 
-    public Response deleteWishItem(String id) {
-        return given(authorizedRequestSpec)
+    public Response deleteWishItem(String token, String id) {
+        return given(authorizedRequestSpec(token))
                 .delete("/v2/users/self/wishes/" + id)
                 .then()
                 .spec(responseSpec)
@@ -71,13 +69,13 @@ public class ApiClient {
                 .response();
     }
 
-    public Response createUserCustomList(String title, String description) {
+    public Response createUserCustomList(String token, String title, String description) {
 
         UserCustomList userCustomListData = new UserCustomList();
         userCustomListData.setTitle(title);
         userCustomListData.setDescription(description);
 
-        return given(authorizedRequestSpec)
+        return given(authorizedRequestSpec(token))
                 .body(userCustomListData)
                 .post("/v2/users/self/wish-lists")
                 .then()
@@ -86,8 +84,8 @@ public class ApiClient {
                 .response();
     }
 
-    public Response deleteUserCustomList(String id) {
-        return given(authorizedRequestSpec)
+    public Response deleteUserCustomList(String token, String id) {
+        return given(authorizedRequestSpec(token))
                 .delete("/v2/users/self/wish-lists/" + id)
                 .then()
                 .spec(responseSpec)
@@ -95,25 +93,25 @@ public class ApiClient {
                 .response();
     }
 
-    public void addWishItemToList(String wishId, String wishTitle, String listId) {
+    public void addWishItemToList(String token, WishItem wishItem, String listId) {
 
         WishItem updatedWishItem = WishItem.builder()
-                .title(wishTitle)
+                .title(wishItem.getTitle())
                 .wishLists(List.of(listId))
                 .build();
 
-        given(authorizedRequestSpec)
+        given(authorizedRequestSpec(token))
                 .body(updatedWishItem)
-                .put("/v2/users/self/wishes/" + wishId)
+                .put("/v2/users/self/wishes/" + wishItem.getId())
                 .then()
                 .spec(responseSpec)
                 .extract()
                 .response();
     }
 
-    public Response getOwnUserInfo() {
+    public Response getOwnUserInfo(String token) {
 
-        return given(authorizedRequestSpec)
+        return given(authorizedRequestSpec(token))
                 .get("/v3/own-user")
                 .then()
                 .log()

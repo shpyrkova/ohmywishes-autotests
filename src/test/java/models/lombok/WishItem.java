@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
-@Getter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

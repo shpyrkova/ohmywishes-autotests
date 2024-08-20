@@ -27,7 +27,9 @@ public class UserProfileTests extends TestBaseApi {
     @DisplayName("Получение данных о пользователе (о себе)")
     void getUserProfileTest() throws IOException {
 
-        Response response = step("Запросить данные о пользователе", apiClient::getOwnUserInfo);
+        String token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+        Response response = step("Запросить данные о пользователе", () ->
+                apiClient.getOwnUserInfo(token));
         User userResponseData = response.as(GetOwnUserInfoResponseBody.class).getItem();
         UserSettings userResponseDataSettings = userResponseData.getSettings();
         String filePath = "src/test/java/testdata/ExpectedUserData.json";

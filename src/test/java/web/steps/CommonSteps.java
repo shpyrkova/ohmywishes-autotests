@@ -18,8 +18,8 @@ public class CommonSteps {
     protected static final UserDataConfig userDataConfig = ConfigFactory.create(UserDataConfig.class, System.getProperties());
 
     @Step("Установить авторизационные cookie в браузере")
-    public void setAuthCookie() {
-        String token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+    public void setAuthCookie(String token) {
+//        String token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
         open("/favicon.ico");
         getWebDriver().manage().addCookie(new Cookie("token", token));
     }
@@ -31,13 +31,13 @@ public class CommonSteps {
     }
 
     @Step("Создать желание через API и получить его id")
-    public String createWishItemWithApi(String title, String description) {
-        return apiClient.createWishItem(title, description).as(WishItem.class).getUnderscoreId();
+    public String createWishItemWithApi(String token, WishItem wishItem) {
+        return apiClient.createWishItem(token, wishItem).as(WishItem.class).getUnderscoreId();
     }
 
     @Step("Создать список желаний через API и получить его id")
-    public String createUserCustomWishlistWithApi(String title, String description) {
-        return apiClient.createUserCustomList(title, description).as(UserCustomList.class).getUnderscoreId();
+    public String createUserCustomWishlistWithApi(String token, String title, String description) {
+        return apiClient.createUserCustomList(token, title, description).as(UserCustomList.class).getUnderscoreId();
     }
 
 }

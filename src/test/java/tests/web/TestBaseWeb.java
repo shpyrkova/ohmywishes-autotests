@@ -1,5 +1,6 @@
 package tests.web;
 
+import api.ApiClient;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.common.ApiConfig;
@@ -36,6 +37,7 @@ public class TestBaseWeb {
     final LoginPage loginPage = new LoginPage();
     final MyWishesPage myWishesPage = new MyWishesPage();
     TestDataGenerator dataGenerator = new TestDataGenerator();
+    ApiClient apiClient = new ApiClient();
 
     @BeforeAll
     public static void beforeAll() {

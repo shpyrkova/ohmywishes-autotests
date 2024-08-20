@@ -4,6 +4,7 @@ import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.*;
 import models.lombok.api.GetWishItemResponseBody;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,12 +17,20 @@ import static org.assertj.core.api.Assertions.*;
 @DisplayName("API. Желания пользователя")
 public class UserWishesTests extends TestBaseApi {
 
+    String token;
+
+    @BeforeEach
+    public void authorizeAndOpenMyWishesPage() {
+        token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+    }
+
     @Test
     @DisplayName("Получение данных о желании неавторизованным пользователем")
     void getWishItemTest() {
         String wishItemTitle = dataGenerator.generateWishItemTitle();
         String wishItemDescription = dataGenerator.generateWishItemDescription();
-        String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
+        WishItem wishItem = WishItem.builder().title(wishItemTitle).description(wishItemDescription).build();
+        String wishItemId = steps.createWishItemWithApi(token, wishItem);
 
         Response response = step("Отправить запрос на получение данных о желании без авторизации", () ->
                 apiClient.getWishItemNonAuthorized(wishItemId));
@@ -40,14 +49,15 @@ public class UserWishesTests extends TestBaseApi {
     void deleteWishItemTest() {
         String wishItemTitle = dataGenerator.generateWishItemTitle();
         String wishItemDescription = dataGenerator.generateWishItemDescription();
-        String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
+        WishItem wishItem = WishItem.builder().title(wishItemTitle).description(wishItemDescription).build();
+        String wishItemId = steps.createWishItemWithApi(token, wishItem);
 
         Response response = step("Отправить запрос на удаление желания", () ->
-                apiClient.deleteWishItem(wishItemId));
+                apiClient.deleteWishItem(token, wishItemId));
 
         step("Проверить, что желание удалено", () -> {
             assertThat(response.statusCode()).isEqualTo(204);
-            assertThat(apiClient.getWishItemAuthorized(wishItemId).statusCode()).isEqualTo(404);
+            assertThat(apiClient.getWishItemAuthorized(token, wishItemId).statusCode()).isEqualTo(404);
         });
     }
 

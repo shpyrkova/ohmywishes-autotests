@@ -3,6 +3,8 @@ package tests.api;
 import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import models.lombok.UserCustomList;
+import models.lombok.WishItem;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,6 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("API. Кастомные списки желаний пользователя")
 public class UserCustomListsTests extends TestBaseApi {
 
+    String token;
+    @BeforeEach
+    public void authorizeAndOpenMyWishesPage() {
+        token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+    }
+
     @Test
     @DisplayName("Создание списка желаний")
     void createUserCustomListTest() {
@@ -22,7 +30,7 @@ public class UserCustomListsTests extends TestBaseApi {
         String listDescription = dataGenerator.generateUserCustomListDescription();
 
         Response response = step("Создать список желаний", () ->
-                apiClient.createUserCustomList(listTitle, listDescription));
+                apiClient.createUserCustomList(token, listTitle, listDescription));
         UserCustomList responseUserCustomList = response.as(UserCustomList.class);
 
         step("Проверить, что название и описание созданного списка корректны", () -> {
@@ -37,19 +45,20 @@ public class UserCustomListsTests extends TestBaseApi {
     void deleteListWithWishesTest() {
         String listTitle = dataGenerator.generateUserCustomListTitle();
         String listDescription = dataGenerator.generateUserCustomListDescription();
-        String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
+        String listId = steps.createUserCustomWishlistWithApi(token, listTitle, listDescription);
         String wishItemTitle = dataGenerator.generateWishItemTitle();
         String wishItemDescription = dataGenerator.generateWishItemDescription();
-        String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
+        WishItem wishItem = WishItem.builder().title(wishItemTitle).description(wishItemDescription).build();
+        String wishItemId = steps.createWishItemWithApi(token, wishItem);
         step("Добавить желание в список желаний", () -> {
-            apiClient.addWishItemToList(wishItemId, wishItemTitle, listId);
+            apiClient.addWishItemToList(token, wishItem, listId);
         });
 
-        Response response = step("Удалить список желаний", () -> apiClient.deleteUserCustomList(listId));
+        Response response = step("Удалить список желаний", () -> apiClient.deleteUserCustomList(token, listId));
 
         step("Проверить, что желание из списка осталось в системе", () -> {
             assertThat(response.statusCode()).isEqualTo(204);
-            assertThat(apiClient.getWishItemAuthorized(wishItemId).statusCode()).isEqualTo(200);
+            assertThat(apiClient.getWishItemAuthorized(token, wishItemId).statusCode()).isEqualTo(200);
         });
     }
 

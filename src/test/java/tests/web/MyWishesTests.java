@@ -14,9 +14,12 @@ import static io.qameta.allure.Allure.step;
 @DisplayName("WEB. Работа с желаниями пользователя на странице 'Мои желания'")
 public class MyWishesTests extends TestBaseWeb {
 
+    String token;
+
     @BeforeEach
     public void authorizeAndOpenMyWishesPage() {
-        steps.setAuthCookie();
+        token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+        steps.setAuthCookie(token);
     }
 
     final FulfilledListPage fulfilledListPage = new FulfilledListPage();
@@ -56,7 +59,8 @@ public class MyWishesTests extends TestBaseWeb {
     void markWishAsGiftedTest() {
         String wishItemTitle = dataGenerator.generateWishItemTitle();
         String wishItemDescription = dataGenerator.generateWishItemDescription();
-        String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
+        WishItem wishItem = WishItem.builder().title(wishItemTitle).description(wishItemDescription).build();
+        String wishItemId = steps.createWishItemWithApi(token, wishItem);
         String username = userDataConfig.getUsername();
         steps.openMyWishesPage();
 
@@ -77,10 +81,11 @@ public class MyWishesTests extends TestBaseWeb {
     void addWishToListTest() {
         String wishItemTitle = dataGenerator.generateWishItemTitle();
         String wishItemDescription = dataGenerator.generateWishItemDescription();
+        WishItem wishItem = WishItem.builder().title(wishItemTitle).description(wishItemDescription).build();
         String listTitle = dataGenerator.generateUserCustomListTitle();
         String listDescription = dataGenerator.generateUserCustomListDescription();
-        String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
-        String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
+        String wishItemId = steps.createWishItemWithApi(token, wishItem);
+        String listId = steps.createUserCustomWishlistWithApi(token, listTitle, listDescription);
         String username = userDataConfig.getUsername();
         steps.openMyWishesPage();
 

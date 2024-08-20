@@ -19,7 +19,8 @@ public class SantaTests extends TestBaseWeb {
     @Test
     @DisplayName("Создание игры Тайный санта с заполнением всех полей")
     void createSantaGameTest() {
-        steps.setAuthCookie();
+        String token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
+        steps.setAuthCookie(token);
         steps.openMyWishesPage();
         String title = dataGenerator.generateGameTitle();
         String description = dataGenerator.generateGameDescription();
