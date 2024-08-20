@@ -19,7 +19,7 @@ public class CommonSteps {
 
     @Step("Установить авторизационные cookie в браузере")
     public void setAuthCookie() {
-        String token = apiClient.generateToken();
+        String token = apiClient.requestToken(userDataConfig.getEmail(), userDataConfig.getPassword());
         open("/favicon.ico");
         getWebDriver().manage().addCookie(new Cookie("token", token));
     }

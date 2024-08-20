@@ -1,11 +1,9 @@
 package api;
 
-import config.common.UserDataConfig;
 import io.restassured.response.Response;
 import models.lombok.api.LoginRequestBody;
 import models.lombok.UserCustomList;
 import models.lombok.WishItem;
-import org.aeonbits.owner.ConfigFactory;
 
 import java.util.List;
 
@@ -14,13 +12,11 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
 
-    protected static final UserDataConfig userDataConfig = ConfigFactory.create(UserDataConfig.class, System.getProperties());
-
-    public String generateToken() {
+    public String requestToken(String email, String password) {
 
         LoginRequestBody authData = new LoginRequestBody();
-        authData.setEmail(userDataConfig.getEmail());
-        authData.setPassword(userDataConfig.getPassword());
+        authData.setEmail(email);
+        authData.setPassword(password);
 
         Response response = given(requestSpec)
                 .body(authData)
