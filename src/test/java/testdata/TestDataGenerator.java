@@ -2,7 +2,12 @@ package testdata;
 
 import com.github.javafaker.Faker;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class TestDataGenerator {
@@ -31,10 +36,13 @@ public class TestDataGenerator {
     }
 
     public String generateGameEndDate() {
-        String day = String.valueOf(faker.number().numberBetween(10, 12));
-        String month = String.valueOf(faker.number().numberBetween(10, 12));
-        String year = String.valueOf(faker.number().numberBetween(2024, 2030));
-        return day + month + year;
+        Calendar startDate = new GregorianCalendar(2025, Calendar.NOVEMBER, 10);
+        Calendar endDate = new GregorianCalendar(2025, Calendar.NOVEMBER, 12);
+
+        Date randomDate = faker.date().between(startDate.getTime(), endDate.getTime());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        return dateFormat.format(randomDate);
     }
 
     public String generateWishItemCurrency() {
