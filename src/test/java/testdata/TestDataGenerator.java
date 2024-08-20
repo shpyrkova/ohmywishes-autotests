@@ -9,7 +9,6 @@ public class TestDataGenerator {
 
     static Faker faker = new Faker(new Locale("en-GB"));
     public static String wishPicture = "pictures/wish_avatar.png";
-    public static String username = "surkova";
 
     public static String generatePassword() {
         return faker.internet().password();

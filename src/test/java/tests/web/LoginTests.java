@@ -20,8 +20,8 @@ public class LoginTests extends TestBaseWeb {
     @Test
     @DisplayName("Успешная авторизация по email и паролю")
     void loginWithEmailTest() {
-        String email = credentialsConfig.getEmail();
-        String password = credentialsConfig.getPassword();
+        String email = userDataConfig.getEmail();
+        String password = userDataConfig.getPassword();
 
         step("Открыть главную страницу, нажать Войти", () -> {
             open("");
@@ -34,7 +34,7 @@ public class LoginTests extends TestBaseWeb {
         });
 
         step("После авторизации есть меню Мои желания со ссылкой на профиль пользователя", () -> {
-            String username = TestDataGenerator.username;
+            String username = userDataConfig.getUsername();
             myWishesPage.getMyWishesLink(username).shouldBe(visible);
         });
 
@@ -43,7 +43,7 @@ public class LoginTests extends TestBaseWeb {
     @Test
     @DisplayName("Попытка авторизации с невалидным паролем")
     void loginWithInvalidPasswordTest() {
-        String email = credentialsConfig.getEmail();
+        String email = userDataConfig.getEmail();
         String wrongPassword = TestDataGenerator.generatePassword();
         String expectedUrl = Configuration.baseUrl + loginPage.url;
 

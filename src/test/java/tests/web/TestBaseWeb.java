@@ -3,7 +3,7 @@ package tests.web;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.common.ApiConfig;
-import config.common.CredentialsConfig;
+import config.common.UserDataConfig;
 import config.web.WebDriverConfig;
 import config.web.WebDriverProvider;
 import helpers.Attachments;
@@ -28,7 +28,7 @@ public class TestBaseWeb {
     protected final WebTestsHelper webTestsHelper = new WebTestsHelper();
     private final WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
     final CommonSteps steps = new CommonSteps();
-    protected static final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    protected static final UserDataConfig userDataConfig = ConfigFactory.create(UserDataConfig.class, System.getProperties());
     protected static final ApiConfig apiConfig = ConfigFactory.create(ApiConfig.class, System.getProperties());
 
     final MainPage mainPage = new MainPage();

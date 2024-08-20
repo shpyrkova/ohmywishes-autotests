@@ -58,7 +58,7 @@ public class MyWishesTests extends TestBaseWeb {
         String wishItemTitle = TestDataGenerator.generateWishItemTitle();
         String wishItemDescription = TestDataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
-        String username = TestDataGenerator.username;
+        String username = userDataConfig.getUsername();
         steps.openMyWishesPage();
 
         step("Отметить желание подаренным", () -> {
@@ -82,7 +82,7 @@ public class MyWishesTests extends TestBaseWeb {
         String listDescription = TestDataGenerator.generateUserCustomListDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
         String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
-        String username = TestDataGenerator.username;
+        String username = userDataConfig.getUsername();
         steps.openMyWishesPage();
 
         step("Добавить желание в список желаний", () -> {
@@ -91,7 +91,7 @@ public class MyWishesTests extends TestBaseWeb {
         });
 
         step("Проверить, что желание появилось в списке", () -> {
-            userCustomListPage.openPage(listId);
+            userCustomListPage.openPage(userDataConfig.getUsername(), listId);
             userCustomListPage.wishItemCard(username, listId, wishItemId).shouldBe(visible);
         });
     }

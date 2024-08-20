@@ -1,6 +1,6 @@
 package api;
 
-import config.common.CredentialsConfig;
+import config.common.UserDataConfig;
 import io.restassured.response.Response;
 import models.lombok.api.LoginRequestBody;
 import models.lombok.UserCustomList;
@@ -14,13 +14,13 @@ import static io.restassured.RestAssured.given;
 
 public class ApiClient {
 
-    protected static final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
+    protected static final UserDataConfig userDataConfig = ConfigFactory.create(UserDataConfig.class, System.getProperties());
 
     public String generateToken() {
 
         LoginRequestBody authData = new LoginRequestBody();
-        authData.setEmail(credentialsConfig.getEmail());
-        authData.setPassword(credentialsConfig.getPassword());
+        authData.setEmail(userDataConfig.getEmail());
+        authData.setPassword(userDataConfig.getPassword());
 
         Response response = given(requestSpec)
                 .body(authData)

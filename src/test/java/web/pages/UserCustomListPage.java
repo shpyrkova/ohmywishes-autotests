@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class UserCustomListPage {
 
-    private String url(String userCustomListId) {
-        return String.format("/users/surkova/lists/%s", userCustomListId);
+    private String url(String username, String userCustomListId) {
+        return String.format("/users/%s/lists/%s", username, userCustomListId);
     }
 
-    public void openPage(String userCustomListId) {
-        open(url(userCustomListId));
+    public void openPage(String username, String userCustomListId) {
+        open(url(username, userCustomListId));
     }
 
     public SelenideElement wishItemCard(String username, String listId, String wishId) {

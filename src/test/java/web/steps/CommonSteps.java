@@ -1,12 +1,13 @@
 package web.steps;
 
 import api.ApiClient;
+import config.common.UserDataConfig;
 import io.qameta.allure.Step;
 import models.lombok.UserCustomList;
 import models.lombok.WishItem;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Cookie;
 import web.pages.MyWishesPage;
-import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -14,6 +15,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class CommonSteps {
 
     private final ApiClient apiClient = new ApiClient();
+    protected static final UserDataConfig userDataConfig = ConfigFactory.create(UserDataConfig.class, System.getProperties());
 
     @Step("Установить авторизационные cookie в браузере")
     public void setAuthCookie() {
@@ -25,7 +27,7 @@ public class CommonSteps {
     @Step("Открыть страницу Мои желания")
     public void openMyWishesPage() {
         MyWishesPage myWishesPage = new MyWishesPage();
-        myWishesPage.openPage(TestDataGenerator.username);
+        myWishesPage.openPage(userDataConfig.getUsername());
     }
 
     @Step("Создать желание через API и получить его id")

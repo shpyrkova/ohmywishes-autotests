@@ -19,8 +19,8 @@ public class LoginTests extends TestBaseMobile {
         });
 
         step("Ввести email и пароль, нажать Далее", () -> {
-            $(id("com.ohmywishes.start:id/editTextEmail")).sendKeys(credentialsConfig.getEmail());
-            $(id("com.ohmywishes.start:id/editTextPassword")).sendKeys(credentialsConfig.getPassword());
+            $(id("com.ohmywishes.start:id/editTextEmail")).sendKeys(userDataConfig.getEmail());
+            $(id("com.ohmywishes.start:id/editTextPassword")).sendKeys(userDataConfig.getPassword());
             $(id("com.ohmywishes.start:id/tvNext")).click();
         });
 
@@ -49,7 +49,7 @@ public class LoginTests extends TestBaseMobile {
         });
 
         step("Ввести почту для сброса пароля, нажать Далее", () -> {
-            $(id("com.ohmywishes.start:id/editText")).sendKeys(credentialsConfig.getEmail());
+            $(id("com.ohmywishes.start:id/editText")).sendKeys(userDataConfig.getEmail());
             $(id("com.ohmywishes.start:id/tvNext")).click();
         });
 

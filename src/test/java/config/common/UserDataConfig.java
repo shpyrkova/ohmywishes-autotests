@@ -3,13 +3,16 @@ package config.common;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:credentials.properties"
+        "classpath:userdata.properties"
 })
 
-public interface CredentialsConfig extends Config {
+public interface UserDataConfig extends Config {
     @Key("email")
     String getEmail();
 
     @Key("password")
     String getPassword();
+
+    @Key("username")
+    String getUsername();
 }
