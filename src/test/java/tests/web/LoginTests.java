@@ -1,5 +1,6 @@
 package tests.web;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Epic("Web тесты")
 @Tag("web")
@@ -62,6 +64,22 @@ public class LoginTests extends TestBaseWeb {
             assertThat(currentUrl).isEqualTo(expectedUrl);
         });
 
+    }
+
+    @Test
+    @DisplayName("Для неавторизованного пользователя по нажатию 'Мои желания' открывается страница авторизации")
+    void checkMyWishesLinkForNotAuthorizedUserTest() {
+        step("Открыть главную страницу", () -> {
+            open("");
+        });
+
+        step("Нажать Мои желания", mainPage::clickMyWishesLink);
+
+        step("Открыта страница авторизации", () -> {
+            loginPage.byEmailButton.shouldBe(Condition.visible);
+            String currentUrl = webTestsHelper.getCurrentUrl();
+            assertEquals("https://ohmywishes.ru/authorization", currentUrl);
+        });
     }
 
 }
