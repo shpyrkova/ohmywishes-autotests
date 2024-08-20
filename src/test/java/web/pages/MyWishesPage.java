@@ -1,6 +1,7 @@
 package web.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import models.lombok.WishItem;
 import web.pages.components.WishItemComponent;
 
 import static com.codeborne.selenide.Condition.text;
@@ -42,9 +43,9 @@ public class MyWishesPage {
         secretSantaLink.click();
     }
 
-    public void createWishItem(String title, String link, String description, String price, String currency, String filePath) {
+    public void createWishItem(WishItem wishItem) {
         createWishButton.shouldBe(visible).click();
-        wishItemComponent.fillAllWishItemFields(title, link, description, price, currency, filePath);
+        wishItemComponent.fillAllWishItemFields(wishItem);
         wishItemComponent.submitButtonClick();
     }
 

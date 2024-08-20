@@ -1,6 +1,7 @@
 package web.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
+import models.lombok.WishItem;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,19 +20,18 @@ public class WishItemComponent {
         return $(byText(currency));
     }
 
-    public void fillAllWishItemFields(String title, String link, String description, String price, String currency, String filePath) {
-        wishTitleInput.setValue(title);
-        wishLinkInput.setValue(link);
-        wishDescriptionInput.setValue(description);
-        wishPriceInput.setValue(price);
+    public void fillAllWishItemFields(WishItem wishItem) {
+        wishTitleInput.setValue(wishItem.getTitle());
+        wishLinkInput.setValue(wishItem.getLink());
+        wishDescriptionInput.setValue(wishItem.getDescription());
+        wishPriceInput.setValue(String.valueOf(wishItem.getPrice()));
         wishCurrencyInput.click();
-        wishCurrencyName(currency).scrollIntoView(true).click();
-        wishPictureInput.uploadFromClasspath(filePath);
+        wishCurrencyName(wishItem.getCurrency()).scrollIntoView(true).click();
+        wishPictureInput.uploadFromClasspath(wishItem.getPicture());
     }
 
     public void submitButtonClick() {
         submitButton.click();
     }
-
 
 }

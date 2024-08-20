@@ -2,12 +2,15 @@ package models.lombok;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
-@JsonIgnoreProperties(value = {"wish_lists"}, ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown=true)
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class WishItem {
 
     private String id;
@@ -15,10 +18,11 @@ public class WishItem {
     @JsonProperty("_id")
     private String underscoreId;
 
-    private String title, currency, description, link;
+    private String title, currency, description, link, picture, trackingId, photo, color;
 
     private Integer price;
-    private boolean isPrivate;
+
+    private boolean fulfilled, copiedByMe, assigned, assignedByMe, idea, assignee;
 
     @JsonProperty("wish_lists")
     private List<String> wishLists;

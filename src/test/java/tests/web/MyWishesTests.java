@@ -1,6 +1,7 @@
 package tests.web;
 
 import io.qameta.allure.Epic;
+import models.lombok.WishItem;
 import org.junit.jupiter.api.*;
 import web.pages.UserCustomListPage;
 import web.pages.FulfilledListPage;
@@ -27,15 +28,23 @@ public class MyWishesTests extends TestBaseWeb {
     void createWishItemTest() {
         String wishItemTitle = TestDataGenerator.generateWishItemTitle();
         String wishItemLink = TestDataGenerator.generateWishItemLink();
-        String wishItemAvatar = TestDataGenerator.wishPicture;
+        String wishItemPictureLink = TestDataGenerator.wishPicture;
         String wishItemDescription = TestDataGenerator.generateWishItemDescription();
-        String wishItemPrice = TestDataGenerator.generateMoneySum();
+        Integer wishItemPrice = TestDataGenerator.generateMoneySum();
         String wishItemCurrency = TestDataGenerator.generateWishItemCurrency();
+        WishItem wishItem = WishItem.builder()
+                .title(wishItemTitle)
+                .link(wishItemLink)
+                .description(wishItemDescription)
+                .price(wishItemPrice)
+                .currency(wishItemCurrency)
+                .picture(wishItemPictureLink).build();
+
         steps.openMyWishesPage();
 
         step("Создать желание с заполнением всех полей и аватаром", () -> {
             myWishesPage
-                    .createWishItem(wishItemTitle, wishItemLink, wishItemDescription, wishItemPrice, wishItemCurrency, wishItemAvatar);
+                    .createWishItem(wishItem);
         });
 
         step("Проверить, что желание появилось в списке желаний", () -> {

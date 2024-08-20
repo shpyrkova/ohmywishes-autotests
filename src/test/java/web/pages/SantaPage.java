@@ -23,11 +23,11 @@ public class SantaPage {
         createGameButton.click();
     }
 
-    public void fillAllGameFields(String title, String date, String description, String limit) {
+    public void fillAllGameFields(String title, String date, String description, Integer limit) {
         gameTitleInput.setValue(title);
         gameEndDateInput.setValue(date);
         gameDescriptionInput.setValue(description);
-        gameLimitInput.setValue(limit);
+        gameLimitInput.setValue(String.valueOf(limit));
     }
 
     public void nextButtonClick() {

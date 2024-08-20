@@ -34,9 +34,10 @@ public class ApiClient {
 
     public Response createWishItem(String title, String description) {
 
-        WishItem wishItemData = new WishItem();
-        wishItemData.setDescription(description);
-        wishItemData.setTitle(title);
+        WishItem wishItemData = WishItem.builder()
+                .title(title)
+                .description(description)
+                .build();
 
         return given(authorizedRequestSpec)
                 .body(wishItemData)
@@ -100,9 +101,10 @@ public class ApiClient {
 
     public void addWishItemToList(String wishId, String wishTitle, String listId) {
 
-        WishItem updatedWishItem = new WishItem();
-        updatedWishItem.setTitle(wishTitle);
-        updatedWishItem.setWishLists(List.of(listId));
+        WishItem updatedWishItem = WishItem.builder()
+                .title(wishTitle)
+                .wishLists(List.of(listId))
+                .build();
 
         given(authorizedRequestSpec)
                 .body(updatedWishItem)

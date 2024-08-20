@@ -27,8 +27,8 @@ public class TestDataGenerator {
         return faker.funnyName().name();
     }
 
-    public static String generateMoneySum() {
-        return String.valueOf(faker.number().numberBetween(100, 999999));
+    public static Integer generateMoneySum() {
+        return faker.number().numberBetween(100, 999999);
     }
 
     public static String generateGameEndDate() {

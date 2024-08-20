@@ -24,7 +24,7 @@ public class SantaTests extends TestBaseWeb {
         steps.openMyWishesPage();
         String title = TestDataGenerator.generateGameTitle();
         String description = TestDataGenerator.generateGameDescription();
-        String limit = TestDataGenerator.generateMoneySum();
+        Integer limit = TestDataGenerator.generateMoneySum();
         String endDate = TestDataGenerator.generateGameEndDate();
 
         step("Нажать Тайный санта -> Создать игру", () -> {
