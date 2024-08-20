@@ -13,24 +13,19 @@ public class RequestResponseSpecs {
 
     public static final RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
-            .log().uri()
-            .log().body()
-            .log().headers()
+            .log().all()
             .contentType(JSON);
 
     public static RequestSpecification authorizedRequestSpec(String token) {
         return with()
                 .filter(withCustomTemplates())
-                .log().uri()
-                .log().body()
-                .log().headers()
+                .log().all()
                 .contentType(JSON)
                 .header("X-Access-Token", token);
     }
 
     public static final ResponseSpecification responseSpec = new ResponseSpecBuilder()
-            .log(STATUS)
-            .log(BODY)
+            .log(ALL)
             .build();
 
 }
