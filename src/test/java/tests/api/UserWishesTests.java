@@ -7,7 +7,6 @@ import models.lombok.api.GetWishItemResponseBody;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import testdata.TestDataGenerator;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.*;
@@ -20,8 +19,8 @@ public class UserWishesTests extends TestBaseApi {
     @Test
     @DisplayName("Получение данных о желании неавторизованным пользователем")
     void getWishItemTest() {
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
 
         Response response = step("Отправить запрос на получение данных о желании без авторизации", () ->
@@ -39,8 +38,8 @@ public class UserWishesTests extends TestBaseApi {
     @Test
     @DisplayName("Удаление желания")
     void deleteWishItemTest() {
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
 
         Response response = step("Отправить запрос на удаление желания", () ->

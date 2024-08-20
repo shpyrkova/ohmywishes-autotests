@@ -6,7 +6,6 @@ import models.lombok.UserCustomList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import testdata.TestDataGenerator;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,8 +18,8 @@ public class UserCustomListsTests extends TestBaseApi {
     @Test
     @DisplayName("Создание списка желаний")
     void createUserCustomListTest() {
-        String listTitle = TestDataGenerator.generateUserCustomListTitle();
-        String listDescription = TestDataGenerator.generateUserCustomListDescription();
+        String listTitle = dataGenerator.generateUserCustomListTitle();
+        String listDescription = dataGenerator.generateUserCustomListDescription();
 
         Response response = step("Создать список желаний", () ->
                 apiClient.createUserCustomList(listTitle, listDescription));
@@ -36,11 +35,11 @@ public class UserCustomListsTests extends TestBaseApi {
     @Test
     @DisplayName("При удалении кастомного списка желаний желания из этого списка не удаляются из системы")
     void deleteListWithWishesTest() {
-        String listTitle = TestDataGenerator.generateUserCustomListTitle();
-        String listDescription = TestDataGenerator.generateUserCustomListDescription();
+        String listTitle = dataGenerator.generateUserCustomListTitle();
+        String listDescription = dataGenerator.generateUserCustomListDescription();
         String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
         step("Добавить желание в список желаний", () -> {
             apiClient.addWishItemToList(wishItemId, wishItemTitle, listId);

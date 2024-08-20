@@ -14,6 +14,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import testdata.TestDataGenerator;
 import web.pages.LoginPage;
 import web.pages.MainPage;
 import web.pages.MyWishesPage;
@@ -34,6 +35,7 @@ public class TestBaseWeb {
     final MainPage mainPage = new MainPage();
     final LoginPage loginPage = new LoginPage();
     final MyWishesPage myWishesPage = new MyWishesPage();
+    TestDataGenerator dataGenerator = new TestDataGenerator();
 
     @BeforeAll
     public static void beforeAll() {

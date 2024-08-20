@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import web.pages.SantaPage;
-import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
@@ -22,10 +21,10 @@ public class SantaTests extends TestBaseWeb {
     void createSantaGameTest() {
         steps.setAuthCookie();
         steps.openMyWishesPage();
-        String title = TestDataGenerator.generateGameTitle();
-        String description = TestDataGenerator.generateGameDescription();
-        Integer limit = TestDataGenerator.generateMoneySum();
-        String endDate = TestDataGenerator.generateGameEndDate();
+        String title = dataGenerator.generateGameTitle();
+        String description = dataGenerator.generateGameDescription();
+        Integer limit = dataGenerator.generateMoneySum();
+        String endDate = dataGenerator.generateGameEndDate();
 
         step("Нажать Тайный санта -> Создать игру", () -> {
             myWishesPage.clickSecretSantaLink();

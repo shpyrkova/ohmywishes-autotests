@@ -5,7 +5,6 @@ import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.open;
@@ -44,7 +43,7 @@ public class LoginTests extends TestBaseWeb {
     @DisplayName("Попытка авторизации с невалидным паролем")
     void loginWithInvalidPasswordTest() {
         String email = userDataConfig.getEmail();
-        String wrongPassword = TestDataGenerator.generatePassword();
+        String wrongPassword = dataGenerator.generatePassword();
         String expectedUrl = Configuration.baseUrl + loginPage.url;
 
         step("Открыть главную страницу, нажать Войти", () -> {

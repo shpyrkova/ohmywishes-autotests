@@ -5,7 +5,6 @@ import models.lombok.WishItem;
 import org.junit.jupiter.api.*;
 import web.pages.UserCustomListPage;
 import web.pages.FulfilledListPage;
-import testdata.TestDataGenerator;
 
 import static com.codeborne.selenide.Condition.visible;
 import static io.qameta.allure.Allure.step;
@@ -26,12 +25,12 @@ public class MyWishesTests extends TestBaseWeb {
     @Test
     @DisplayName("Создание нового желания с заполнением всех полей")
     void createWishItemTest() {
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemLink = TestDataGenerator.generateWishItemLink();
-        String wishItemPictureLink = TestDataGenerator.wishPicture;
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
-        Integer wishItemPrice = TestDataGenerator.generateMoneySum();
-        String wishItemCurrency = TestDataGenerator.generateWishItemCurrency();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemLink = dataGenerator.generateWishItemLink();
+        String wishItemPictureLink = dataGenerator.wishPicture;
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
+        Integer wishItemPrice = dataGenerator.generateMoneySum();
+        String wishItemCurrency = dataGenerator.generateWishItemCurrency();
         WishItem wishItem = WishItem.builder()
                 .title(wishItemTitle)
                 .link(wishItemLink)
@@ -55,8 +54,8 @@ public class MyWishesTests extends TestBaseWeb {
     @Test
     @DisplayName("Отметка желания как подаренного")
     void markWishAsGiftedTest() {
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
         String username = userDataConfig.getUsername();
         steps.openMyWishesPage();
@@ -76,10 +75,10 @@ public class MyWishesTests extends TestBaseWeb {
     @Test
     @DisplayName("Добавление желания в созданный пользователем список")
     void addWishToListTest() {
-        String wishItemTitle = TestDataGenerator.generateWishItemTitle();
-        String wishItemDescription = TestDataGenerator.generateWishItemDescription();
-        String listTitle = TestDataGenerator.generateUserCustomListTitle();
-        String listDescription = TestDataGenerator.generateUserCustomListDescription();
+        String wishItemTitle = dataGenerator.generateWishItemTitle();
+        String wishItemDescription = dataGenerator.generateWishItemDescription();
+        String listTitle = dataGenerator.generateUserCustomListTitle();
+        String listDescription = dataGenerator.generateUserCustomListDescription();
         String wishItemId = steps.createWishItemWithApi(wishItemTitle, wishItemDescription);
         String listId = steps.createUserCustomWishlistWithApi(listTitle, listDescription);
         String username = userDataConfig.getUsername();
