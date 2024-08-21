@@ -37,8 +37,6 @@ dependencies {
             "io.rest-assured:rest-assured:5.3.1",
             "org.assertj:assertj-core:3.25.1",
             'com.fasterxml.jackson.core:jackson-databind:2.13.3',
-            'com.fasterxml.jackson.core:jackson-core:2.13.3',
-            'com.fasterxml.jackson.core:jackson-annotations:2.13.3',
             "com.github.javafaker:javafaker:1.0.2",
             "io.appium:java-client:8.6.0",
             "commons-io:commons-io:2.11.0"
@@ -57,25 +55,25 @@ tasks.withType(Test).configureEach {
     }
 }
 
-task android_tests(type: Test) {
+tasks.register('android_tests', Test) {
     useJUnitPlatform {
         includeTags("mobile")
     }
 }
 
-task web_tests(type: Test) {
+tasks.register('web_tests', Test) {
     useJUnitPlatform {
         includeTags("web")
     }
 }
 
-task api_tests(type: Test) {
+tasks.register('api_tests', Test) {
     useJUnitPlatform {
         includeTags("api")
     }
 }
 
-task for_jenkins(type: Test) {
+tasks.register('for_jenkins', Test) {
     useJUnitPlatform {
         includeTags("web", "api")
     }
