@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -23,6 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("API. Профиль пользователя")
 public class UserProfileTests extends TestBaseApi {
 
+    private final ClassLoader cl = UserProfileTests.class.getClassLoader();
+
     @Test
     @DisplayName("Получение данных о пользователе (о себе)")
     void getUserProfileTest() throws IOException {
@@ -32,9 +33,8 @@ public class UserProfileTests extends TestBaseApi {
                 apiClient.getOwnUserInfo(token));
         User userResponseData = response.as(GetOwnUserInfoResponseBody.class).getItem();
         UserSettings userResponseDataSettings = userResponseData.getSettings();
-        String filePath = "src/test/java/testdata/ExpectedUserData.json";
 
-        try (Reader reader = new InputStreamReader(new FileInputStream(filePath))) {
+        try (Reader reader = new InputStreamReader(cl.getResourceAsStream("ExpectedUserData.json"))) {
             ObjectMapper objectMapper = new ObjectMapper();
             User expectedUserData = objectMapper.readValue(reader, User.class);
             UserSettings expectedUserSettings = expectedUserData.getSettings();

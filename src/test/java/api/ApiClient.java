@@ -30,9 +30,6 @@ public class ApiClient {
 
     public Response createWishItem(String token, WishItem wishItem) {
 
-        System.out.println("!!!!!!!!!!!!!!!" + wishItem);
-//        WishItem wishBody =
-
         return given(authorizedRequestSpec(token))
                 .body(wishItem)
                 .post("/v2/users/self/wishes")
